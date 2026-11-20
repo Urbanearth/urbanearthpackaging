@@ -34,8 +34,6 @@ const requiredRootFiles = [
   'vercel.json',
   'favicon.ico',
   'favicon.png',
-  '.gitignore',
-  '.vercelignore',
   'package.json'
 ];
 
