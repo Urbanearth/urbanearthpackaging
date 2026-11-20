@@ -1,0 +1,1 @@
+Updated only the three Solutions industry image placeholders to a responsive 4:3 (1200x900) aspect ratio. Original images, home page, navigation, translations and product pages are retained. Open index.html after extracting the ZIP.

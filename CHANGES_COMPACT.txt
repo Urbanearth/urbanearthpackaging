@@ -1,0 +1,1 @@
+Increased header logo using the supplied transparent logo image; reduced hero vertical spacing to bring yellow moving strip into first viewport; compacted Solutions heading, image cards, descriptions, chips and section padding on desktop. Existing product images, links and multilingual code retained. At very short screen heights, browser scrolling may still be needed.

@@ -1,0 +1,7 @@
+Minimal homepage update
+1. Removed 'Choose Your Industry' cards section.
+2. Removed 'What do you need packaging for?' six-card section.
+3. Removed the corresponding dead navigation links.
+4. Changed hero Browse by Industry link to Browse Packaging, targeting existing Solutions section.
+5. Reduced desktop hero heading and vertical spacing for 100% browser zoom.
+6. Kept the three existing industry photos, catalogue and other website sections unchanged.

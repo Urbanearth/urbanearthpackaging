@@ -1,0 +1,22 @@
+{
+  "name": "urbanearthpackaging",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Urban Earth Packaging Solutions and Services website",
+  "scripts": {
+    "build": "node test.js",
+    "test": "node test.js",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "packaging",
+    "urbanearthpackaging",
+    "boxes",
+    "stretch-film",
+    "e-commerce-packaging",
+    "food-packaging",
+    "industrial-packaging"
+  ],
+  "author": "Urban Earth Packaging Solutions and Services",
+  "license": "UNLICENSED"
+}

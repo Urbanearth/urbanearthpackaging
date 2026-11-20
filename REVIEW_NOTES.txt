@@ -1,0 +1,15 @@
+REVIEW - 15 Nov 2026
+Checked: 131 pages (home, 3 category pages, 127 product pages), all internal links and images, sitemap, robots, titles/descriptions/canonicals, WhatsApp/email consistency, image-to-product matching for all 127 products.
+Result: no broken links, no missing images, sitemap complete (131 URLs), no duplicate titles, every product page image matches its home-page card.
+Fixed: E-commerce "Shipping labels" and "Sticker labels" had each other's photos. Swapped on the home page, E-commerce category page and both product pages.
+
+HEADER UPDATE
+1. Top bar text now reads "Packaging solutions for businesses across Pune and surrounding area" (English, Hindi and Marathi).
+2. "Products" tab removed from the menu; only "Search Products" remains.
+3. Green info bar + main menu now stay pinned while scrolling on every page (home, 3 category pages, 127 product pages).
+   Category/product pages now use the same two-bar header as the home page (English only, no language switch).
+4. "Search Products" now opens the All products / "Browse every product in one place" section with the heading visible under the pinned header (from any page).
+
+CATEGORY PAGE UPDATE
+- E-commerce, Food & Bakery and Industrial pages now match the home catalogue: industry tabs, how-it-works note, search box with tip, sub-category chips (All, Boxes & cartons, ...), live product count, products grouped under sub-category headings.
+- Industry tabs (All products / E-commerce / Food & Bakery / Industrial) also appear under the breadcrumb on all 127 product pages.
