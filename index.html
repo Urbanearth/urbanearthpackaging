@@ -661,6 +661,365 @@ html {scroll-padding-top:125px}
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<!-- Hero Product Search Styles -->
+<style id="ue-hero-search-style">
+.ue-hero-search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 22px 0 24px;
+  z-index: 35;
+}
+.ue-hero-search-box {
+  position: relative;
+  width: 100%;
+}
+.ue-hero-search-field {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #d5e0dc;
+  border-radius: 16px;
+  padding: 5px 6px 5px 14px;
+  box-shadow: 0 10px 30px rgba(22, 50, 79, 0.07);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.ue-hero-search-field:focus-within {
+  border-color: #0f8b8d;
+  box-shadow: 0 12px 32px rgba(15, 139, 141, 0.15), 0 0 0 3px rgba(15, 139, 141, 0.14);
+}
+.ue-hero-search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f8b8d;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+.ue-hero-search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 11px 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.96rem;
+  color: #141c28;
+  outline: none;
+}
+.ue-hero-search-input::placeholder {
+  color: #8c9ba5;
+  font-size: 0.91rem;
+}
+.ue-hero-search-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #edf3f1;
+  color: #556975;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 6px;
+  flex-shrink: 0;
+  transition: background .18s, color .18s;
+}
+.ue-hero-search-clear:hover {
+  background: #dbe7e3;
+  color: #141c28;
+}
+.ue-hero-search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #0f8b8d;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .2s, transform .15s;
+}
+.ue-hero-search-btn:hover {
+  background: #0b7274;
+}
+
+/* Popular Chips */
+.ue-hero-popular {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 11px;
+  font-size: 0.82rem;
+  color: #667085;
+}
+.ue-pop-label {
+  font-weight: 700;
+  color: #141c28;
+  margin-right: 2px;
+}
+.ue-pop-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.ue-pop-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #f4f8f7;
+  border: 1px solid #dbe6e2;
+  color: #18524d;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s, transform .15s;
+}
+.ue-pop-chip:hover {
+  background: #e8f3f0;
+  border-color: #0f8b8d;
+  color: #0f8b8d;
+  transform: translateY(-1px);
+}
+
+/* Autocomplete Panel */
+.ue-hero-suggest-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e1e8e5;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px -8px rgba(16, 40, 63, 0.16), 0 4px 12px rgba(16, 40, 63, 0.05);
+  overflow: hidden;
+  z-index: 100;
+  max-height: min(75vh, 470px);
+  display: flex;
+  flex-direction: column;
+  animation: ueFadeIn .18s ease-out;
+}
+@keyframes ueFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ue-suggest-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #f7faf9;
+  border-bottom: 1px solid #edf2f0;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #63777d;
+}
+.ue-suggest-count {
+  font-weight: 700;
+  color: #0f8b8d;
+}
+.ue-suggest-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.ue-suggest-item {
+  border-bottom: 1px solid #f2f6f5;
+}
+.ue-suggest-item:last-child {
+  border-bottom: none;
+}
+.ue-suggest-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #243447;
+  transition: background .15s ease;
+}
+.ue-suggest-item.active .ue-suggest-link,
+.ue-suggest-link:hover {
+  background: #f1f8f7;
+}
+.ue-suggest-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #f0f4f5;
+  border: 1px solid #e5ecea;
+  flex-shrink: 0;
+}
+.ue-suggest-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ue-suggest-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ue-suggest-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: #141c28;
+}
+.ue-suggest-name mark {
+  background: #d4f2ee;
+  color: #08615e;
+  font-weight: 800;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+.ue-suggest-badge {
+  display: inline-block;
+  font-size: 0.70rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: #edf7f5;
+  color: #0f8b8d;
+  white-space: nowrap;
+}
+.ue-suggest-desc {
+  font-size: 0.81rem;
+  color: #667085;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.ue-suggest-arrow {
+  font-size: 1.1rem;
+  color: #9cb1ab;
+  flex-shrink: 0;
+  transition: transform .15s, color .15s;
+}
+.ue-suggest-item.active .ue-suggest-arrow,
+.ue-suggest-link:hover .ue-suggest-arrow {
+  color: #0f8b8d;
+  transform: translateX(3px);
+}
+.ue-suggest-footer {
+  padding: 8px 12px;
+  background: #f7faf9;
+  border-top: 1px solid #edf2f0;
+}
+.ue-suggest-viewall {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: #ffffff;
+  border: 1px solid #d5e3df;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #144943;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s;
+}
+.ue-suggest-viewall:hover {
+  background: #e9f4f1;
+  border-color: #0f8b8d;
+  color: #0f8b8d;
+}
+.ue-viewall-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Empty State */
+.ue-suggest-empty {
+  padding: 24px 20px 22px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ue-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.ue-empty-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #141c28;
+  margin: 0 0 6px;
+}
+.ue-empty-desc {
+  font-size: 0.84rem;
+  color: #667085;
+  max-width: 440px;
+  margin: 0 auto 16px;
+  line-height: 1.45;
+}
+.ue-empty-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1fa855;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(31, 168, 85, 0.28);
+  transition: background .18s, transform .15s;
+}
+.ue-empty-wa:hover {
+  background: #178a46;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+  .ue-hero-search-wrap {
+    margin: 16px 0 20px;
+    max-width: 100%;
+  }
+  .ue-hero-search-field {
+    padding: 4px 4px 4px 10px;
+    border-radius: 14px;
+  }
+  .ue-hero-search-input {
+    font-size: 0.90rem;
+    padding: 9px 2px;
+  }
+  .ue-hero-search-btn {
+    padding: 9px 12px;
+  }
+  .ue-hero-search-btn span {
+    display: none;
+  }
+  .ue-pop-chip {
+    padding: 5px 11px;
+    font-size: 0.78rem;
+  }
+}
+</style>
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0"><symbol id="pune-skyline" preserveaspectratio="xMidYMax slice" viewbox="0 0 1200 180">
@@ -705,7 +1064,76 @@ html {scroll-padding-top:125px}
 <header class="nav-wrap"><div class="container navbar"><div class="brand-block"><a aria-label="Urban Earth Packaging Solutions and Services home" class="brand" href="#home"><img alt="Urban Earth Packaging Solutions and Services" class="brand-full" decoding="async" height="168" loading="eager" src="assets/images/urban-earth-logo-updated.png" width="794"/></a></div><nav class="nav-links" id="navLinks"><a class="active" href="#home">Home</a><a href="#solutions">Solutions</a><a href="#products">Search Products</a><a href="#how-it-works">How It Works</a><a href="#about">Why Urban Earth</a><a href="#contact">Contact</a></nav><div class="nav-actions"><a class="btn btn-primary" href="#contact">Get a Quote <span>↗</span></a><button aria-expanded="false" aria-label="Toggle navigation" class="menu-btn" id="menuBtn">☰</button></div></div></header>
 <main>
 <div class="view" id="view-home">
-<section class="hero" id="home"><div class="container hero-grid"><div class="hero-copy"><span class="eyebrow">Your complete packaging sourcing partner</span><h1>Packaging for Every Business.<br/><span style="color:var(--teal)">One Trusted Sourcing Partner.</span></h1><p>From food containers and e-commerce mailers to industrial protection, discover packaging materials, sizes and customisation options in one place.</p><div class="hero-actions"><a class="btn btn-primary" href="#contact">Request a Quote <span>↗</span></a><a class="btn btn-secondary" href="#solutions">Browse Packaging <span>↓</span></a></div><div class="trust-line"><span><i class_="check">✓</i> Bulk &amp; repeat supply</span><span><i class_="check">✓</i> Custom sizes &amp; branding</span><span><i class_="check">✓</i> One enquiry for multiple products</span></div></div><div class="hero-visual"><div aria-label="Packaging materials including cartons, pouches, bags, tapes and crates" class="hero-photo" role="img"><img alt="Corrugated boxes, paper bags, food containers, protective foam, stretch film, and industrial packaging materials" decoding="async" fetchpriority="high" height="639" loading="eager" src="assets/images/packaging-002.webp" style="width:100%;height:100%;object-fit:cover;object-position:center;" width="1221"/><div class="photo-shade"></div></div></div></div></section>
+<section class="hero" id="home"><div class="container hero-grid"><div class="hero-copy"><span class="eyebrow">Your complete packaging sourcing partner</span><h1>Packaging for Every Business.<br/><span style="color:var(--teal)">One Trusted Sourcing Partner.</span></h1><p>From food containers and e-commerce mailers to industrial protection, discover packaging materials, sizes and customisation options in one place.</p>
+<div class="ue-hero-search-wrap" id="ueHeroSearchWrap">
+  <form class="ue-hero-search-box" id="ueHeroSearchForm" role="search" onsubmit="return false;">
+    <div class="ue-hero-search-field">
+      <span class="ue-hero-search-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+      <input
+        type="search"
+        id="ueHeroSearchInput"
+        class="ue-hero-search-input"
+        placeholder="Search 127+ products: e.g. cake boxes, courier bags, stretch film..."
+        aria-label="Search packaging products by name, material, or use"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded="false"
+        aria-controls="ueHeroSuggestList"
+      />
+      <button type="button" id="ueHeroSearchClear" class="ue-hero-search-clear" aria-label="Clear search" hidden>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <button type="submit" id="ueHeroSearchBtn" class="ue-hero-search-btn" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search</span>
+      </button>
+    </div>
+    <div class="ue-hero-suggest-panel" id="ueHeroSuggestPanel" hidden>
+      <div class="ue-suggest-header" id="ueSuggestHeader">
+        <span>Suggested products</span>
+        <span class="ue-suggest-count" id="ueSuggestCount"></span>
+      </div>
+      <ul class="ue-suggest-list" id="ueHeroSuggestList" role="listbox" aria-label="Product suggestions"></ul>
+      <div class="ue-suggest-empty" id="ueSuggestEmpty" hidden>
+        <div class="ue-empty-icon" aria-hidden="true">📦</div>
+        <p class="ue-empty-title">No products found for "<span id="ueEmptyQuery"></span>"</p>
+        <p class="ue-empty-desc">Looking for a custom size, special material or unlisted item? We source custom packaging directly from manufacturers.</p>
+        <a id="ueEmptyWaBtn" class="ue-empty-wa" href="https://wa.me/917387854283" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.78h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zM20.52 3.45A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41z"/></svg>
+          <span>Enquire for custom packaging on WhatsApp ↗</span>
+        </a>
+      </div>
+      <div class="ue-suggest-footer" id="ueSuggestFooter" hidden>
+        <button type="button" class="ue-suggest-viewall" id="ueSuggestViewAll">
+          <span>View all matching products in catalogue</span> <span class="ue-viewall-arrow">↓</span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="ue-hero-popular">
+    <span class="ue-pop-label">Popular:</span>
+    <div class="ue-pop-chips">
+      <button type="button" class="ue-pop-chip" data-query="Paper Bowls">Paper Bowls</button>
+      <button type="button" class="ue-pop-chip" data-query="Courier Bags">Courier Bags</button>
+      <button type="button" class="ue-pop-chip" data-query="Stretch Film">Stretch Film</button>
+    </div>
+  </div>
+</div><div class="hero-actions"><a class="btn btn-primary" href="#contact">Request a Quote <span>↗</span></a><a class="btn btn-secondary" href="#solutions">Browse Packaging <span>↓</span></a></div><div class="trust-line"><span><i class_="check">✓</i> Bulk &amp; repeat supply</span><span><i class_="check">✓</i> Custom sizes &amp; branding</span><span><i class_="check">✓</i> One enquiry for multiple products</span></div></div><div class="hero-visual"><div aria-label="Packaging materials including cartons, pouches, bags, tapes and crates" class="hero-photo" role="img"><img alt="Corrugated boxes, paper bags, food containers, protective foam, stretch film, and industrial packaging materials" decoding="async" fetchpriority="high" height="639" loading="eager" src="assets/images/packaging-002.webp" style="width:100%;height:100%;object-fit:cover;object-position:center;" width="1221"/><div class="photo-shade"></div></div></div></div></section>
 <div aria-label="Packaging product types" class="pack-strip" role="region"><div class="pack-track"><ul class="pack-set"><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M20 18v-3a8 8 0 0 1 16 0v3" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><path d="M12 19h32l3 30H9z" fill="#d9a35f" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#c9954f" height="9" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="42" x="7" y="17"></rect><rect fill="#d9a35f" height="17" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="26"></rect><rect fill="#fff" height="4" rx="1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="10" x="23" y="30"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="44" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="36" x="10" y="7"></rect><path d="M10 14h36" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><rect fill="#fff" height="19" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="22" x="17" y="21"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M17 12v32c0 3 5 5 11 5s11-2 11-5V12z" fill="#cfe4f1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><ellipse cx="28" cy="12" fill="#e6f1f8" rx="11" ry="4.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><ellipse cx="28" cy="29" fill="#ebc9a0" rx="23" ry="15" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse><ellipse cx="28" cy="29" fill="#f6ecd4" rx="14" ry="8.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="5" rx="1.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="15"></rect><rect fill="#d9a35f" height="5" rx="1.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="38"></rect><rect fill="#c9954f" height="18" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="20"></rect><path d="M19 20v18M28 20v18M37 20v18" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><path d="M9 11h38" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#fff" height="26" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="46" x="5" y="16"></rect><circle cx="17" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="28" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="39" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9442f" height="30" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="14"></rect><rect fill="#e9a96a" height="18" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="34" x="11" y="20"></rect><circle cx="21" cy="29" fill="#fff" r="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="35" cy="29" fill="#fff" r="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#dbe6f1" height="7" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="28" x="14" y="8"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="17"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="28"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="39"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#e8ecf4" height="30" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="46" x="5" y="14"></rect><path d="M5 17l23 15 23-15" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><rect fill="#fff" height="5" rx="1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="16" x="20" y="35"></rect></svg></li></ul><ul aria-hidden="true" class="pack-set"><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M20 18v-3a8 8 0 0 1 16 0v3" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><path d="M12 19h32l3 30H9z" fill="#d9a35f" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#c9954f" height="9" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="42" x="7" y="17"></rect><rect fill="#d9a35f" height="17" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="26"></rect><rect fill="#fff" height="4" rx="1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="10" x="23" y="30"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="44" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="36" x="10" y="7"></rect><path d="M10 14h36" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><rect fill="#fff" height="19" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="22" x="17" y="21"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M17 12v32c0 3 5 5 11 5s11-2 11-5V12z" fill="#cfe4f1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><ellipse cx="28" cy="12" fill="#e6f1f8" rx="11" ry="4.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><ellipse cx="28" cy="29" fill="#ebc9a0" rx="23" ry="15" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse><ellipse cx="28" cy="29" fill="#f6ecd4" rx="14" ry="8.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="5" rx="1.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="15"></rect><rect fill="#d9a35f" height="5" rx="1.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="38"></rect><rect fill="#c9954f" height="18" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="20"></rect><path d="M19 20v18M28 20v18M37 20v18" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><path d="M9 11h38" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#fff" height="26" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="46" x="5" y="16"></rect><circle cx="17" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="28" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="39" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9442f" height="30" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="14"></rect><rect fill="#e9a96a" height="18" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="34" x="11" y="20"></rect><circle cx="21" cy="29" fill="#fff" r="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="35" cy="29" fill="#fff" r="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#dbe6f1" height="7" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="28" x="14" y="8"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="17"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="28"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="39"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#e8ecf4" height="30" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="46" x="5" y="14"></rect><path d="M5 17l23 15 23-15" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><rect fill="#fff" height="5" rx="1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="16" x="20" y="35"></rect></svg></li></ul><ul aria-hidden="true" class="pack-set"><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M20 18v-3a8 8 0 0 1 16 0v3" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><path d="M12 19h32l3 30H9z" fill="#d9a35f" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#c9954f" height="9" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="42" x="7" y="17"></rect><rect fill="#d9a35f" height="17" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="26"></rect><rect fill="#fff" height="4" rx="1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="10" x="23" y="30"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="44" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="36" x="10" y="7"></rect><path d="M10 14h36" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><rect fill="#fff" height="19" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="22" x="17" y="21"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M17 12v32c0 3 5 5 11 5s11-2 11-5V12z" fill="#cfe4f1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><ellipse cx="28" cy="12" fill="#e6f1f8" rx="11" ry="4.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><ellipse cx="28" cy="29" fill="#ebc9a0" rx="23" ry="15" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse><ellipse cx="28" cy="29" fill="#f6ecd4" rx="14" ry="8.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></ellipse></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="5" rx="1.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="15"></rect><rect fill="#d9a35f" height="5" rx="1.5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="38"></rect><rect fill="#c9954f" height="18" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="20"></rect><path d="M19 20v18M28 20v18M37 20v18" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><path d="M9 11h38" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#fff" height="26" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="46" x="5" y="16"></rect><circle cx="17" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="28" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="39" cy="29" fill="#f2a7c3" r="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9442f" height="30" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="44" x="6" y="14"></rect><rect fill="#e9a96a" height="18" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="34" x="11" y="20"></rect><circle cx="21" cy="29" fill="#fff" r="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle><circle cx="35" cy="29" fill="#fff" r="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#dbe6f1" height="7" rx="2" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="28" x="14" y="8"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="17"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="28"></rect><rect fill="#9fb6cf" height="10" rx="5" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="38" x="9" y="39"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#e8ecf4" height="30" rx="3" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="46" x="5" y="14"></rect><path d="M5 17l23 15 23-15" fill="none" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path><rect fill="#fff" height="5" rx="1" stroke="#1f2937" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" width="16" x="20" y="35"></rect></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#d9a35f" height="34" rx="3" stroke="#1f2937" stroke-width="2.4" width="42" x="7" y="13"></rect><path d="M7 22h42M19 13v34M37 13v34" fill="none" stroke="#1f2937" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M12 17h32l-3 31H15z" fill="#cfe4f1" stroke="#1f2937" stroke-width="2.4"></path><path d="M18 17l3-8h14l3 8" fill="none" stroke="#1f2937" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#e8ecf4" height="36" rx="3" stroke="#1f2937" stroke-width="2.4" width="40" x="8" y="10"></rect><path d="M8 19h40M18 10v36M38 10v36" fill="none" stroke="#1f2937" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><circle cx="28" cy="28" fill="#ebc9a0" r="20" stroke="#1f2937" stroke-width="2.4"></circle><circle cx="28" cy="28" fill="#fff3d1" r="10" stroke="#1f2937" stroke-width="2.4"></circle></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><path d="M9 14h38v29H9z" fill="#d9a35f" stroke="#1f2937" stroke-width="2.4"></path><path d="M9 14l19 16 19-16" fill="none" stroke="#1f2937" stroke-width="2.4"></path><path d="M9 43l14-13M47 43L33 30" fill="none" stroke="#1f2937" stroke-width="2.4"></path></svg></li><li><svg aria-hidden="true" viewbox="0 0 56 56"><rect fill="#9fb6cf" height="28" rx="4" stroke="#1f2937" stroke-width="2.4" width="42" x="7" y="15"></rect><path d="M14 22h28M14 29h28M14 36h18" stroke="#1f2937" stroke-width="2.4"></path></svg></li></ul></div></div>
 <section class="section" id="solutions"><div class="container"><div class="section-head center"><span class="eyebrow">Solutions for your business</span><h2>Packaging that works for the way you do business.</h2><p>Different businesses have different packing challenges. Tell us what you ship, serve, store or manufacture—we’ll help you source suitable packaging options.</p></div><div class="segment-grid">
 <article class="segment-card"><div class="segment-image has-photo" style="--seg-bg:url(assets/images/ecommerce-packaging-new.webp)"><a aria-label="Explore E-commerce &amp; Online Sellers packaging" class="ue-industry-image-link" href="ecommerce-packaging/"><img alt="E-commerce packaging materials: shipping boxes, courier bags, protective foam, bubble wrap and tape" class="seg-photo seg-fill" decoding="async" height="900" loading="lazy" src="assets/images/ecommerce-packaging-new.webp" width="1200"/></a><span class="segment-tag">Ship &amp; deliver</span></div><div class="segment-body"><h3>E-commerce &amp; Online Sellers</h3><p>Ship every order with confidence. Find the right boxes, courier bags, tapes, and protective packaging for your business.</p><div class="product-chips"><span class="chip">Corrugated boxes</span><span class="chip">Courier bags</span><span class="chip">Bubble wrap</span><span class="chip">Tapes &amp; labels</span><span class="chip">Paper mailers</span></div><div class="seg-links"><a class="text-link" href="ecommerce-packaging/">Explore E-commerce Packaging <span>→</span></a></div></div></article>
@@ -739,6 +1167,36 @@ document.getElementById('quoteForm').addEventListener('submit',e=>{e.preventDefa
 var I18N={"hi":{"Packaging solutions for businesses across Pune and surrounding area":"पुणे और आसपास के क्षेत्रों के व्यवसायों के लिए पैकेजिंग समाधान","WhatsApp 73878 54283":"WhatsApp 73878 54283","9 AM to 9 PM":"सुबह 9 से रात 9 बजे तक","Urban Earth Packaging Solutions and Services home":"अर्बन अर्थ पैकेजिंग सॉल्यूशंस एंड सर्विसेज़ – होम","Packaging solutions · India":"सॉल्यूशंस · पुणे, भारत","Solutions":"समाधान","Products":"उत्पाद","How It Works":"कैसे काम करता है","Why Urban Earth":"अर्बन अर्थ ही क्यों","Contact":"संपर्क","Get a Quote":"कोटेशन पाएं","Toggle navigation":"मेन्यू खोलें / बंद करें","Your complete packaging sourcing partner":"आपका पैकेजिंग सप्लाई पार्टनर","One Partner.":"एक पार्टनर।","Every Packaging":"हर पैकेजिंग","Need.":"ज़रूरत।","Packaging solutions for every business, from small shipments to bulk supply. Source the materials you need through one convenient point of contact.":"हर व्यवसाय के लिए पैकेजिंग समाधान — छोटी शिपमेंट से लेकर थोक सप्लाई तक। ज़रूरी सामग्री एक ही सुविधाजनक संपर्क के माध्यम से पाएं।","Request a Quote":"कोटेशन का अनुरोध करें","Browse by Industry":"हमारे समाधान देखें","Multi-category sourcing":"कई श्रेणियों की सोर्सिंग","Requirement-led quotations":"आपकी ज़रूरत के अनुसार कोटेशन","Business-focused support":"पुणे पर केंद्रित सहायता","One point of contact":"एक ही संपर्क","Pack smarter, source simpler":"स्मार्ट पैकिंग, आसान सोर्सिंग","Packaging for everyday business":"रोज़मर्रा के व्यवसाय के लिए पैकेजिंग","One sourcing partner":"एक सोर्सिंग पार्टनर","Across multiple packaging categories":"कई पैकेजिंग श्रेणियों में","Business-led solutions":"व्यवसाय-केंद्रित समाधान","Based on your product and use":"आपके उत्पाद और उपयोग के अनुसार","Flexible requirements":"लचीली आवश्यकताएं","Quantities discussed per product":"मात्रा हर उत्पाद के अनुसार तय होती है","Pune and beyond":"पुणे और उससे आगे","Local focus, room to grow":"स्थानीय फोकस, बढ़ने की गुंजाइश","Packaging product types":"पैकेजिंग उत्पादों के प्रकार","Solutions for your business":"आपके व्यवसाय के लिए समाधान","Packaging that works for the way you do business.":"पैकेजिंग जो आपके काम करने के तरीके के अनुरूप हो।","Different businesses have different packing challenges. Tell us what you ship, serve, store or manufacture—we’ll help you source suitable packaging options.":"हर व्यवसाय की पैकिंग संबंधी चुनौतियां अलग होती हैं। बताइए आप क्या भेजते, परोसते, स्टोर करते या बनाते हैं—हम सही पैकेजिंग विकल्प खोजने में आपकी मदद करेंगे।","Ship & deliver":"शिप और डिलीवर करें","E-commerce & Online Sellers":"ई-कॉमर्स और ऑनलाइन विक्रेता","Ship every order with confidence. Find the right boxes, courier bags, tapes, and protective packaging for your business.":"हर ऑर्डर पूरे भरोसे से भेजें। अपने व्यवसाय के लिए सही बॉक्स, कूरियर बैग, टेप और सुरक्षात्मक पैकेजिंग चुनें।","Corrugated boxes":"कोरुगेटेड बॉक्स","Courier bags":"कूरियर बैग","Bubble wrap":"बबल रैप","Tapes & labels":"टेप और लेबल","Paper mailers":"पेपर मेलर","Stretch film":"स्ट्रेच फ़िल्म","Explore E-commerce Packaging":"ई-कॉमर्स पैकेजिंग देखें","Get a Packaging Quote":"पैकेजिंग कोटेशन पाएं","Pack & serve":"पैक करें और परोसें","Bakeries, Food & Cloud Kitchens":"बेकरी, फ़ूड और क्लाउड किचन","Keep your food business ready for every order with practical takeaway, bakery, and food packaging supplies.":"हर ऑर्डर के लिए अपने फ़ूड बिज़नेस को तैयार रखें — टेकअवे, बेकरी और फ़ूड पैकेजिंग का व्यावहारिक सामान।","Bakery boxes":"बेकरी बॉक्स","Paper bags":"पेपर बैग","Food bowls":"फ़ूड बाउल","Takeaway boxes":"टेकअवे बॉक्स","Cups & lids":"कप और ढक्कन","Cake & pizza boxes":"केक और पिज़्ज़ा बॉक्स","Foil containers":"फ़ॉइल कंटेनर","Food-safety suitability depends on the specific product. We confirm supplier documentation on request.":"फ़ूड-सेफ़्टी की उपयुक्तता विशिष्ट उत्पाद पर निर्भर करती है। अनुरोध पर हम सप्लायर के दस्तावेज़ों की पुष्टि करते हैं।","Explore Food Packaging":"फ़ूड पैकेजिंग देखें","Store & transport":"स्टोर और ट्रांसपोर्ट करें","Manufacturers & Industrial Buyers":"निर्माता और औद्योगिक खरीदार","Source practical packaging materials for your daily dispatches, storage, transportation, and bulk supply requirements.":"रोज़ की डिस्पैच, भंडारण, परिवहन और थोक आपूर्ति की ज़रूरतों के लिए व्यावहारिक पैकेजिंग सामग्री पाएं।","Heavy-duty cartons":"हेवी-ड्यूटी कार्टन","Strapping":"स्ट्रैपिंग","Edge protectors":"एज प्रोटेक्टर","Protective foam":"सुरक्षात्मक फ़ोम","Custom-sized cartons*":"कस्टम साइज़ कार्टन*","Explore Industrial Packaging":"औद्योगिक पैकेजिंग देखें","Request Bulk Pricing":"थोक मूल्य जानें","*Subject to supplier availability and sourcing feasibility.":"*सप्लायर की उपलब्धता और सोर्सिंग की व्यवहार्यता के अधीन।","Packaging product range":"पैकेजिंग उत्पाद श्रृंखला","Everyday essentials. Multiple categories.":"रोज़मर्रा की ज़रूरी चीज़ें। कई श्रेणियां।","We source packaging materials to match your application, dimensions, quantity and budget. Product options depend on supplier availability and specification.":"हम आपके उपयोग, आकार, मात्रा और बजट के अनुसार पैकेजिंग सामग्री सोर्स करते हैं। उत्पाद विकल्प सप्लायर की उपलब्धता और विनिर्देश पर निर्भर करते हैं।","Corrugated Boxes":"कोरुगेटेड बॉक्स","Shipping cartons, mailer boxes and industrial cartons.":"शिपिंग कार्टन, मेलर बॉक्स और औद्योगिक कार्टन।","Enquire about boxes →":"बॉक्स के बारे में पूछें →","Protective Packaging":"सुरक्षात्मक पैकेजिंग","Bubble wrap, foam and cushioning options.":"बबल रैप, फ़ोम और कुशनिंग विकल्प।","Find protection options →":"सुरक्षा विकल्प देखें →","Courier & Mailer Bags":"कूरियर और मेलर बैग","Shipping bags and paper mailer options.":"शिपिंग बैग और पेपर मेलर विकल्प।","Enquire about bags →":"बैग के बारे में पूछें →","Tapes & Labels":"टेप और लेबल","Sealing tapes, shipping labels and consumables.":"सीलिंग टेप, शिपिंग लेबल और उपभोग्य सामग्री।","Source tapes & labels →":"टेप और लेबल सोर्स करें →","Food & Bakery Packaging":"फ़ूड और बेकरी पैकेजिंग","Takeaway boxes, bakery cartons, bowls and bags.":"टेकअवे बॉक्स, बेकरी कार्टन, बाउल और बैग।","Explore food packaging →":"फ़ूड पैकेजिंग देखें →","Industrial Packaging":"औद्योगिक पैकेजिंग","Strapping, stretch film and dispatch materials.":"स्ट्रैपिंग, स्ट्रेच फ़िल्म और डिस्पैच सामग्री।","Request industrial options →":"औद्योगिक विकल्प पूछें →","Wrapping & Pallet Supplies":"रैपिंग और पैलेट सामग्री","Stretch wrapping and load-protection materials.":"स्ट्रेच रैपिंग और माल-सुरक्षा सामग्री।","Enquire about wrapping →":"रैपिंग के बारे में पूछें →","Custom-Sourced Items":"कस्टम सोर्स की गई वस्तुएं","Special sizes, printed options and other requirements.":"विशेष साइज़, प्रिंटेड विकल्प और अन्य ज़रूरतें।","Discuss your requirement →":"अपनी ज़रूरत बताएं →","Looking for something specific?":"कुछ खास ढूंढ रहे हैं?","Share the product, size, specification and estimated quantity. We’ll review sourcing options with you.":"उत्पाद, साइज़, विनिर्देश और अनुमानित मात्रा बताएं। हम आपके साथ सोर्सिंग विकल्पों की समीक्षा करेंगे।","Tell Us What You Need":"हमें अपनी ज़रूरत बताएं","One convenient point of contact":"एक सुविधाजनक संपर्क","Less time coordinating across packaging categories.":"अलग-अलग पैकेजिंग श्रेणियों के समन्वय में कम समय।","Less sourcing effort. More focus on your business.":"सोर्सिंग में कम मेहनत। आपके व्यवसाय पर ज़्यादा ध्यान।","Urban Earth Packaging Solutions and Services is a packaging material sourcing and supply partner for businesses that want a practical way to procure packaging products across categories.":"अर्बन अर्थ पैकेजिंग सॉल्यूशंस एंड सर्विसेज़ एक पैकेजिंग सामग्री सोर्सिंग और सप्लाई पार्टनर है, उन व्यवसायों के लिए जो विभिन्न श्रेणियों के पैकेजिंग उत्पाद आसानी से खरीदना चाहते हैं।","We understand your requirement, coordinate with suitable suppliers and share quotation options based on the specifications and quantities involved.":"हम आपकी ज़रूरत समझते हैं, उपयुक्त सप्लायरों से समन्वय करते हैं और विनिर्देशों व मात्रा के आधार पर कोटेशन विकल्प साझा करते हैं।","Multiple categories":"कई श्रेणियां","Bring different packaging needs to one conversation.":"अलग-अलग पैकेजिंग ज़रूरतें एक ही बातचीत में लाएं।","Requirement-led sourcing":"ज़रूरत-आधारित सोर्सिंग","Options considered around size, use and quantity.":"साइज़, उपयोग और मात्रा के आधार पर विकल्प।","Quote transparency":"कोटेशन में पारदर्शिता","Review product, quantity and commercial details.":"उत्पाद, मात्रा और व्यावसायिक विवरण जांचें।","Responsive coordination":"त्वरित समन्वय","A clear point of contact for your enquiry.":"आपकी पूछताछ के लिए एक स्पष्ट संपर्क।","A simple process":"एक सरल प्रक्रिया","From requirement to supply.":"ज़रूरत से सप्लाई तक।","A straightforward process designed to make packaging procurement easier.":"पैकेजिंग खरीद को आसान बनाने के लिए बनाई गई सीधी प्रक्रिया।","Tell us your need":"अपनी ज़रूरत बताएं","Share product type, dimensions, application, quantity and delivery location.":"उत्पाद का प्रकार, साइज़, उपयोग, मात्रा और डिलीवरी स्थान बताएं।","We explore sourcing":"हम सोर्सिंग खोजते हैं","We coordinate with suitable suppliers and check available specifications.":"हम उपयुक्त सप्लायरों से संपर्क करते हैं और उपलब्ध विनिर्देश जांचते हैं।","Review your quote":"अपना कोटेशन देखें","Discuss pricing, order quantities, lead time and relevant product details.":"मूल्य, ऑर्डर की मात्रा, डिलीवरी समय और उत्पाद के विवरण पर चर्चा करें।","Confirm the order":"ऑर्डर कन्फ़र्म करें","Once details are agreed, we coordinate the supply process with you.":"विवरण तय होने के बाद हम आपके साथ सप्लाई प्रक्रिया का समन्वय करते हैं।","Have a packaging list to source?":"क्या आपके पास सोर्स करने के लिए पैकेजिंग की सूची है?","Send us your requirement—even if it includes several product types. We’ll help you work through the options.":"अपनी ज़रूरत भेजें—भले ही उसमें कई तरह के उत्पाद हों। हम विकल्पों पर काम करने में आपकी मदद करेंगे।","Request a Business Quote":"बिज़नेस कोटेशन का अनुरोध करें","Good to know":"जानने योग्य बातें","Frequently asked questions.":"अक्सर पूछे जाने वाले प्रश्न।","Have a question before sending your requirement? Start here, or contact us directly for product-specific details.":"ज़रूरत भेजने से पहले कोई सवाल है? यहां से शुरू करें, या उत्पाद की जानकारी के लिए सीधे संपर्क करें।","Ask us a question":"हमसे सवाल पूछें","Do you manufacture packaging materials?":"क्या आप पैकेजिंग सामग्री बनाते हैं?","Our primary business is packaging material sourcing and supply. We coordinate with suppliers to help customers procure suitable products. Custom-made or printed items may be explored subject to supplier capability and feasibility.":"हमारा मुख्य व्यवसाय पैकेजिंग सामग्री की सोर्सिंग और सप्लाई है। हम ग्राहकों को उपयुक्त उत्पाद दिलाने के लिए सप्लायरों से समन्वय करते हैं। कस्टम या प्रिंटेड वस्तुएं सप्लायर की क्षमता और व्यवहार्यता के अनुसार देखी जा सकती हैं।","Can small businesses place orders?":"क्या छोटे व्यवसाय ऑर्डर दे सकते हैं?","We welcome enquiries from small businesses as well as industrial buyers. Minimum quantities and availability depend on the specific product and supplier, so please share your requirement for review.":"हम छोटे व्यवसायों और औद्योगिक खरीदारों, दोनों की पूछताछ का स्वागत करते हैं। न्यूनतम मात्रा और उपलब्धता उत्पाद व सप्लायर पर निर्भर करती है, इसलिए कृपया समीक्षा के लिए अपनी ज़रूरत भेजें।","Can you source products not listed on this website?":"क्या आप इस वेबसाइट पर न दिखे उत्पाद भी सोर्स कर सकते हैं?","Yes, you can ask us about other packaging materials. Share the product description, dimensions, intended use and approximate quantity so we can assess sourcing options.":"जी हां, आप अन्य पैकेजिंग सामग्री के बारे में पूछ सकते हैं। उत्पाद का विवरण, साइज़, उपयोग और अनुमानित मात्रा बताएं ताकि हम सोर्सिंग विकल्प जांच सकें।","Are food packaging products certified as food-safe?":"क्या फ़ूड पैकेजिंग उत्पाद फ़ूड-सेफ़ प्रमाणित हैं?","Product suitability and any food-contact documentation must be verified for the specific product and supplier. Please tell us the intended use and any documentation requirements before ordering.":"उत्पाद की उपयुक्तता और फ़ूड-कॉन्टैक्ट संबंधी दस्तावेज़ संबंधित उत्पाद और सप्लायर के लिए सत्यापित किए जाने चाहिए। कृपया ऑर्डर से पहले उपयोग और आवश्यक दस्तावेज़ बताएं।","Where can you supply packaging?":"क्या आप पुणे के बाहर सप्लाई करते हैं?","Share your delivery location, quantity and packaging requirements. We will confirm availability and shipping feasibility.":"पुणे और आसपास के क्षेत्र हमारी शुरुआती प्राथमिकता हैं। अन्य स्थानों के लिए अपना डिलीवरी पिन कोड और ज़रूरत बताएं ताकि व्यवहार्यता जांची जा सके।","Let’s talk packaging":"पैकेजिंग पर बात करें","Tell us what your business needs.":"बताइए आपके व्यवसाय को क्या चाहिए।","Share a few details and we’ll have the information needed to discuss suitable sourcing options.":"कुछ जानकारी साझा करें, ताकि हम उपयुक्त सोर्सिंग विकल्पों पर चर्चा कर सकें।","Let’s make packaging procurement simpler.":"आइए पैकेजिंग खरीद को आसान बनाएं।","Whether you need a few packaging essentials or regular bulk supplies, start with a clear requirement.":"चाहे कुछ ज़रूरी पैकेजिंग सामान चाहिए या नियमित थोक सप्लाई, शुरुआत एक स्पष्ट ज़रूरत से करें।","Service area":"सेवा क्षेत्र","India":"पुणे, महाराष्ट्र, भारत","Other locations considered on request":"अन्य स्थान अनुरोध पर विचारणीय","WhatsApp or call":"WhatsApp या कॉल करें","Quotation support":"कोटेशन सहायता","Share product details and estimated quantities":"उत्पाद का विवरण और अनुमानित मात्रा बताएं","Request a quotation":"कोटेशन का अनुरोध करें","Fields marked * are required. Submitting opens WhatsApp with your enquiry filled in, ready to send.":"* वाले फ़ील्ड आवश्यक हैं। सबमिट करने पर आपकी पूछताछ भरी हुई स्थिति में WhatsApp में खुलेगी, भेजने के लिए तैयार।","Your name *":"आपका नाम *","Full name":"पूरा नाम","Business name":"व्यवसाय का नाम","Your business":"आपका व्यवसाय","Phone number *":"फ़ोन नंबर *","10-digit mobile number":"10 अंकों का मोबाइल नंबर","Packaging category *":"पैकेजिंग श्रेणी *","Select a category":"श्रेणी चुनें","E-commerce packaging":"ई-कॉमर्स पैकेजिंग","Food and bakery packaging":"फ़ूड और बेकरी पैकेजिंग","Industrial packaging":"औद्योगिक पैकेजिंग","Protective packaging":"सुरक्षात्मक पैकेजिंग","Tapes and labels":"टेप और लेबल","Other / multiple products":"अन्य / कई उत्पाद","Estimated quantity / frequency":"अनुमानित मात्रा / आवृत्ति","e.g. 500 boxes monthly, one-time order":"जैसे: हर महीने 500 बॉक्स, एक बार का ऑर्डर","What do you need? *":"आपको क्या चाहिए? *","Product type, dimensions, specifications, delivery pin code, etc.":"उत्पाद का प्रकार, साइज़, विनिर्देश, डिलीवरी पिन कोड आदि","Prepare Enquiry":"पूछताछ तैयार करें","Nothing is sent until you press send in WhatsApp.":"जब तक आप WhatsApp में भेजें नहीं दबाते, कुछ नहीं भेजा जाता।","Your packaging material sourcing and supply partner. One point of contact for the packaging needs of growing businesses.":"आपका पैकेजिंग सामग्री सोर्सिंग और सप्लाई पार्टनर। बढ़ते व्यवसायों की पैकेजिंग ज़रूरतों के लिए एक संपर्क।","Explore":"देखें","Customer Solutions":"ग्राहक समाधान","Product Range":"उत्पाद श्रृंखला","Popular Categories":"लोकप्रिय श्रेणियां","Courier Bags":"कूरियर बैग","Food Packaging":"फ़ूड पैकेजिंग","Industrial Supplies":"औद्योगिक सामग्री","Get in touch":"संपर्क करें","Request a Quotation":"कोटेशन का अनुरोध करें","Share a Product List":"उत्पाद सूची भेजें","Call 73878 54283":"कॉल करें 73878 54283","Urban Earth Packaging Solutions and Services. All rights reserved.":"अर्बन अर्थ पैकेजिंग सॉल्यूशंस एंड सर्विसेज़। सर्वाधिकार सुरक्षित।","Packaging supply, made more convenient.":"पैकेजिंग सप्लाई, अब और सुविधाजनक।","WhatsApp":"WhatsApp","Get a Quote ↗":"कोटेशन पाएं ↗","Your enquiry message has been prepared in WhatsApp. Please review and send it there.":"आपकी पूछताछ का संदेश WhatsApp में तैयार हो गया है। कृपया वहां देखकर भेज दें।","__title__":"अर्बन अर्थ पैकेजिंग सॉल्यूशंस एंड सर्विसेज़ | एक पार्टनर। हर पैकेजिंग ज़रूरत।","Product catalogue":"उत्पाद सूची","E-commerce":"ई-कॉमर्स","Food & Bakery":"फ़ूड और बेकरी","Industrial":"औद्योगिक","E-commerce packaging products":"ई-कॉमर्स पैकेजिंग उत्पाद","Food & bakery packaging products":"फ़ूड और बेकरी पैकेजिंग उत्पाद","Industrial packaging products":"औद्योगिक पैकेजिंग उत्पाद","Browse what we can source in this category. Tap Enquire on any product to start your quote.":"इस श्रेणी में हम जो सोर्स कर सकते हैं, उसे देखें। कोटेशन शुरू करने के लिए किसी भी उत्पाद पर “पूछें” दबाएं।","Enquire about this →":"इसके बारे में पूछें →","*Printed options subject to supplier capability and minimum quantities.":"*प्रिंटेड विकल्प सप्लायर की क्षमता और न्यूनतम मात्रा के अधीन हैं।","Availability, sizes and specifications are confirmed at the time of quotation.":"उपलब्धता, साइज़ और विनिर्देश कोटेशन के समय पुष्टि किए जाते हैं।","Don’t see what you need?":"जो चाहिए वह नहीं दिखा?","We can source other items too. Tell us your requirement.":"हम अन्य वस्तुएं भी सोर्स कर सकते हैं। अपनी ज़रूरत बताएं।","Corrugated shipping boxes":"कोरुगेटेड शिपिंग बॉक्स","3-ply and 5-ply cartons in a range of sizes for parcels and bulk dispatch.":"पार्सल और थोक डिस्पैच के लिए अलग-अलग साइज़ में 3-प्लाई और 5-प्लाई कार्टन।","Tamper-evident bags for e-commerce shipments, plain or printed*.":"ई-कॉमर्स शिपमेंट के लिए टैम्पर-एविडेंट बैग, सादे या प्रिंटेड*।","Cushioning rolls that protect fragile items in transit.":"ट्रांज़िट में नाज़ुक सामान को बचाने वाले कुशनिंग रोल।","Packaging tapes":"पैकेजिंग टेप","Clear, brown and printed* BOPP tapes for sealing cartons.":"कार्टन सील करने के लिए क्लियर, ब्राउन और प्रिंटेड* BOPP टेप।","Padded and plain mailers for lightweight shipments.":"हल्की शिपमेंट के लिए पैडेड और सादे मेलर।","Wrapping film to bundle and secure multiple parcels.":"कई पार्सल को बांधने और सुरक्षित रखने के लिए रैपिंग फ़िल्म।","Shipping labels":"शिपिंग लेबल","Thermal and adhesive labels for addresses and barcodes.":"पते और बारकोड के लिए थर्मल और चिपकने वाले लेबल।","Fragile & warning tapes":"फ़्रैजाइल और चेतावनी टेप","“Fragile” and “Handle with care” tapes for safer handling.":"सुरक्षित हैंडलिंग के लिए “Fragile” और “Handle with care” टेप।","Cake, pastry and cookie boxes, with or without a window.":"केक, पेस्ट्री और कुकी के बॉक्स, खिड़की के साथ या बिना।","Pizza boxes":"पिज़्ज़ा बॉक्स","Corrugated pizza boxes in standard sizes.":"स्टैंडर्ड साइज़ में कोरुगेटेड पिज़्ज़ा बॉक्स।","Meal boxes and containers for takeaway and delivery.":"टेकअवे और डिलीवरी के लिए मील बॉक्स और कंटेनर।","Kraft paper bags for food, bakery and retail use.":"फ़ूड, बेकरी और रिटेल के लिए क्राफ़्ट पेपर बैग।","Paper and kraft bowls for soups, salads and meals.":"सूप, सलाद और भोजन के लिए पेपर और क्राफ़्ट बाउल।","Paper cups with lids for tea, coffee and cold drinks.":"चाय, कॉफ़ी और कोल्ड ड्रिंक के लिए ढक्कन सहित पेपर कप।","Aluminium foil containers with lids for hot food and catering.":"गर्म खाने और कैटरिंग के लिए ढक्कन सहित एल्युमिनियम फ़ॉइल कंटेनर।","Butter paper & wraps":"बटर पेपर और रैप","Grease-proof paper and wraps for sandwiches and bakery items.":"सैंडविच और बेकरी आइटम के लिए ग्रीस-प्रूफ़ पेपर और रैप।","5-ply and 7-ply cartons for heavy or bulk dispatches.":"भारी या थोक डिस्पैच के लिए 5-प्लाई और 7-प्लाई कार्टन।","Strapping rolls":"स्ट्रैपिंग रोल","PP strapping for bundling cartons and securing pallets.":"कार्टन बांधने और पैलेट सुरक्षित करने के लिए PP स्ट्रैपिंग।","Pallet wrapping film for load stability.":"माल की स्थिरता के लिए पैलेट रैपिंग फ़िल्म।","Corner and edge guards that prevent damage to stacked goods.":"रखे हुए माल को नुकसान से बचाने वाले कॉर्नर और एज गार्ड।","EPE foam sheets and rolls for cushioning equipment and parts.":"उपकरण और पुर्ज़ों की कुशनिंग के लिए EPE फ़ोम शीट और रोल।","Kraft paper rolls":"क्राफ़्ट पेपर रोल","Wrapping and void-fill paper for industrial packing.":"औद्योगिक पैकिंग के लिए रैपिंग और वॉइड-फ़िल पेपर।","Made-to-size cartons for special dimensions.":"विशेष साइज़ के लिए माप के अनुसार बने कार्टन।","Strapping accessories":"स्ट्रैपिंग एक्सेसरीज़","Buckles, seals and tensioning tools for strapping.":"स्ट्रैपिंग के लिए बकल, सील और टेंशनिंग टूल।","Home":"होम","Back to all solutions":"सभी समाधानों पर वापस","Explore other categories":"अन्य श्रेणियां देखें","Food & bakery packaging":"फ़ूड और बेकरी पैकेजिंग","Everything you need to pack, protect and ship online orders—from boxes and pouches to labels and tapes.":"ऑनलाइन ऑर्डर पैक, सुरक्षित और शिप करने के लिए ज़रूरी सब कुछ—बॉक्स और पाउच से लेकर लेबल और टेप तक।","17 products":"17 उत्पाद","Boxes & cartons":"बॉक्स और कार्टन","Mailer boxes":"मेलर बॉक्स","Self-locking mailer boxes for apparel, gifts and accessories.":"कपड़ों, गिफ़्ट और एक्सेसरीज़ के लिए सेल्फ़-लॉकिंग मेलर बॉक्स।","Jewellery boxes":"ज्वेलरी बॉक्स","Small rigid and folding boxes for rings, necklaces and ornaments.":"अंगूठी, हार और गहनों के लिए छोटे रिजिड और फ़ोल्डिंग बॉक्स।","Gift boxes":"गिफ़्ट बॉक्स","Presentation boxes for gifting, hampers and festive orders.":"गिफ़्टिंग, हैम्पर और त्योहारी ऑर्डर के लिए प्रेज़ेंटेशन बॉक्स।","Bags & pouches":"बैग और पाउच","Padded bubble mailers":"पैडेड बबल मेलर","Bubble-lined mailers for small fragile items and accessories.":"छोटे नाज़ुक सामान और एक्सेसरीज़ के लिए बबल-लाइन्ड मेलर।","Small pouches (zip-lock)":"छोटे पाउच (ज़िप-लॉक)","Zip-lock and flat pouches for small parts, jewellery, spices and samples.":"छोटे पुर्ज़ों, गहनों, मसालों और सैंपल के लिए ज़िप-लॉक और फ़्लैट पाउच।","Stand-up pouches":"स्टैंड-अप पाउच","Stand-up pouches for dry goods, snacks and retail products.":"सूखे सामान, स्नैक्स और रिटेल उत्पादों के लिए स्टैंड-अप पाउच।","Poly bags":"पॉली बैग","Clear LDPE and PP bags in multiple sizes for everyday packing.":"रोज़ की पैकिंग के लिए अलग-अलग साइज़ में क्लियर LDPE और PP बैग।","Cushioning & protection":"कुशनिंग और सुरक्षा","Void-fill paper":"वॉइड-फ़िल पेपर","Crinkle and kraft paper fill to keep items snug inside boxes.":"डिब्बे के अंदर सामान को टिकाए रखने के लिए क्रिंकल और क्राफ़्ट पेपर फ़िल।","Tapes, labels & tags":"टेप, लेबल और टैग","Sticker labels":"स्टिकर लेबल","Price, barcode and branding sticker labels, plain or printed*.":"प्राइस, बारकोड और ब्रांडिंग स्टिकर लेबल, सादे या प्रिंटेड*।","Hang tags & thank-you cards":"हैंग टैग और थैंक-यू कार्ड","Tags and cards that add a finishing touch to every order.":"हर ऑर्डर को ख़ास बनाने वाले टैग और कार्ड।","Takeaway, bakery and food-service packaging for restaurants, bakeries and cloud kitchens.":"रेस्तरां, बेकरी और क्लाउड किचन के लिए टेकअवे, बेकरी और फ़ूड-सर्विस पैकेजिंग।","14 products":"14 उत्पाद","Cake boxes & boards":"केक बॉक्स और बोर्ड","Cake boxes in assorted sizes with matching cake boards.":"अलग-अलग साइज़ में केक बॉक्स और मैचिंग केक बोर्ड।","Sweet / mithai boxes":"मिठाई बॉक्स","Mithai and sweet boxes, plain or with window, in common weights.":"मिठाई के बॉक्स, सादे या खिड़की वाले, प्रचलित वज़न में।","Food pouches":"फ़ूड पाउच","Stand-up and flat pouches for snacks, spices and dry foods.":"स्नैक्स, मसालों और सूखे खाद्य पदार्थों के लिए स्टैंड-अप और फ़्लैट पाउच।","Serveware":"सर्विंग का सामान","Paper plates & trays":"पेपर प्लेट और ट्रे","Disposable paper plates and serving trays for events and catering.":"आयोजनों और कैटरिंग के लिए डिस्पोज़ेबल पेपर प्लेट और ट्रे।","Straws & cutlery":"स्ट्रॉ और कटलरी","Paper straws and wooden cutlery as eco-friendlier add-ons.":"पर्यावरण के अनुकूल विकल्प के रूप में पेपर स्ट्रॉ और लकड़ी की कटलरी।","Wraps, seals & extras":"रैप, सील और अन्य","Tamper-proof seals & stickers":"टैम्पर-प्रूफ़ सील और स्टिकर","Seal stickers that show if a delivery pack has been opened.":"सील स्टिकर जो दिखाते हैं कि डिलीवरी पैक खोला गया है या नहीं।","Cartons, strapping, wrapping and protection materials for dispatch, storage and bulk supply.":"डिस्पैच, भंडारण और थोक सप्लाई के लिए कार्टन, स्ट्रैपिंग, रैपिंग और सुरक्षा सामग्री।","12 products":"12 उत्पाद","Cartons & sheets":"कार्टन और शीट","Corrugated sheets & layer pads":"कोरुगेटेड शीट और लेयर पैड","Flat corrugated sheets and layer pads to separate and protect stacked goods.":"रखे माल को अलग करने और बचाने के लिए फ़्लैट कोरुगेटेड शीट और लेयर पैड।","Strapping & wrapping":"स्ट्रैपिंग और रैपिंग","Heavy-duty tapes":"हेवी-ड्यूटी टेप","Strong BOPP and cloth tapes for sealing heavy cartons.":"भारी कार्टन सील करने के लिए मज़बूत BOPP और कपड़े के टेप।","Protection":"सुरक्षा","Sacks & covers":"बोरे और कवर","PP woven sacks":"PP वूवन बोरे","Woven polypropylene sacks for bulk goods, grain and materials.":"थोक माल, अनाज और सामग्री के लिए बुने हुए पॉलीप्रोपाइलीन बोरे।","Poly liners & covers":"पॉली लाइनर और कवर","Poly liners and covers to keep goods clean and dry.":"माल को साफ़ और सूखा रखने के लिए पॉली लाइनर और कवर।","Browse by category":"श्रेणी के अनुसार देखें","Packaging materials including cartons, pouches, bags, tapes and crates":"कार्टन, पाउच, बैग, टेप और क्रेट सहित पैकेजिंग सामग्री","Categories":"श्रेणियां"},"mr":{"Packaging solutions for businesses across Pune and surrounding area":"पुणे आणि आसपासच्या परिसरातील व्यवसायांसाठी पॅकेजिंग सोल्यूशन्स","WhatsApp 73878 54283":"WhatsApp 73878 54283","9 AM to 9 PM":"सकाळी 9 ते रात्री 9","Urban Earth Packaging Solutions and Services home":"अर्बन अर्थ पॅकेजिंग सोल्यूशन्स अँड सर्व्हिसेस – मुख्यपृष्ठ","Packaging solutions · India":"सोल्यूशन्स · पुणे, भारत","Solutions":"उपाय","Products":"उत्पादने","How It Works":"कसे काम चालते","Why Urban Earth":"अर्बन अर्थ का?","Contact":"संपर्क","Get a Quote":"कोटेशन मिळवा","Toggle navigation":"मेनू उघडा / बंद करा","Your complete packaging sourcing partner":"तुमचा पॅकेजिंग सप्लाय पार्टनर","One Partner.":"एकच पार्टनर.","Every Packaging":"प्रत्येक पॅकेजिंगची","Need.":"गरज.","Packaging solutions for every business, from small shipments to bulk supply. Source the materials you need through one convenient point of contact.":"प्रत्येक व्यवसायासाठी पॅकेजिंग उपाय — लहान शिपमेंटपासून ते घाऊक पुरवठ्यापर्यंत. तुम्हाला लागणारे साहित्य एकाच सोयीस्कर संपर्काद्वारे मिळवा.","Request a Quote":"कोटेशनसाठी विनंती करा","Browse by Industry":"आमचे उपाय पहा","Multi-category sourcing":"अनेक श्रेणींची सोर्सिंग","Requirement-led quotations":"तुमच्या गरजेनुसार कोटेशन","Business-focused support":"पुणे-केंद्रित सहाय्य","One point of contact":"एकच संपर्क","Pack smarter, source simpler":"स्मार्ट पॅकिंग, सोपी सोर्सिंग","Packaging for everyday business":"दैनंदिन व्यवसायासाठी पॅकेजिंग","One sourcing partner":"एक सोर्सिंग पार्टनर","Across multiple packaging categories":"अनेक पॅकेजिंग श्रेणींमध्ये","Business-led solutions":"व्यवसायाभिमुख उपाय","Based on your product and use":"तुमच्या उत्पादन व वापरानुसार","Flexible requirements":"लवचिक गरजा","Quantities discussed per product":"प्रमाण प्रत्येक उत्पादानुसार ठरवले जाते","Pune and beyond":"पुणे आणि त्यापलीकडे","Local focus, room to grow":"स्थानिक लक्ष, वाढीला भरपूर वाव","Packaging product types":"पॅकेजिंग उत्पादनांचे प्रकार","Solutions for your business":"तुमच्या व्यवसायासाठी उपाय","Packaging that works for the way you do business.":"तुमच्या व्यवसायाच्या पद्धतीला साजेशी पॅकेजिंग.","Different businesses have different packing challenges. Tell us what you ship, serve, store or manufacture—we’ll help you source suitable packaging options.":"प्रत्येक व्यवसायाची पॅकिंगची आव्हाने वेगळी असतात. तुम्ही काय पाठवता, वाढता, साठवता किंवा बनवता ते सांगा—योग्य पॅकेजिंग पर्याय शोधण्यात आम्ही मदत करू.","Ship & deliver":"पाठवा आणि पोहोचवा","E-commerce & Online Sellers":"ई-कॉमर्स आणि ऑनलाइन विक्रेते","Ship every order with confidence. Find the right boxes, courier bags, tapes, and protective packaging for your business.":"प्रत्येक ऑर्डर पूर्ण विश्वासाने पाठवा. तुमच्या व्यवसायासाठी योग्य बॉक्स, कुरिअर बॅग, टेप आणि संरक्षक पॅकेजिंग निवडा.","Corrugated boxes":"कोरुगेटेड बॉक्स","Courier bags":"कुरिअर बॅग","Bubble wrap":"बबल रॅप","Tapes & labels":"टेप आणि लेबल","Paper mailers":"पेपर मेलर","Stretch film":"स्ट्रेच फिल्म","Explore E-commerce Packaging":"ई-कॉमर्स पॅकेजिंग पहा","Get a Packaging Quote":"पॅकेजिंग कोटेशन मिळवा","Pack & serve":"पॅक करा आणि वाढा","Bakeries, Food & Cloud Kitchens":"बेकरी, फूड आणि क्लाउड किचन","Keep your food business ready for every order with practical takeaway, bakery, and food packaging supplies.":"प्रत्येक ऑर्डरसाठी तुमचा फूड व्यवसाय सज्ज ठेवा — टेकअवे, बेकरी आणि फूड पॅकेजिंगचे व्यावहारिक साहित्य.","Bakery boxes":"बेकरी बॉक्स","Paper bags":"पेपर बॅग","Food bowls":"फूड बाउल","Takeaway boxes":"टेकअवे बॉक्स","Cups & lids":"कप आणि झाकणे","Cake & pizza boxes":"केक आणि पिझ्झा बॉक्स","Foil containers":"फॉइल कंटेनर","Food-safety suitability depends on the specific product. We confirm supplier documentation on request.":"अन्न-सुरक्षेची योग्यता संबंधित उत्पादावर अवलंबून असते. विनंतीनुसार आम्ही पुरवठादाराची कागदपत्रे पडताळून देतो.","Explore Food Packaging":"फूड पॅकेजिंग पहा","Store & transport":"साठवा आणि वाहतूक करा","Manufacturers & Industrial Buyers":"उत्पादक आणि औद्योगिक खरेदीदार","Source practical packaging materials for your daily dispatches, storage, transportation, and bulk supply requirements.":"दैनंदिन डिस्पॅच, साठवणूक, वाहतूक आणि घाऊक पुरवठ्याच्या गरजांसाठी व्यावहारिक पॅकेजिंग साहित्य मिळवा.","Heavy-duty cartons":"हेवी-ड्यूटी कार्टन","Strapping":"स्ट्रॅपिंग","Edge protectors":"एज प्रोटेक्टर","Protective foam":"संरक्षक फोम","Custom-sized cartons*":"कस्टम साइज कार्टन*","Explore Industrial Packaging":"औद्योगिक पॅकेजिंग पहा","Request Bulk Pricing":"घाऊक किमतीची विनंती करा","*Subject to supplier availability and sourcing feasibility.":"*पुरवठादाराची उपलब्धता आणि सोर्सिंगच्या व्यवहार्यतेनुसार.","Packaging product range":"पॅकेजिंग उत्पादन श्रेणी","Everyday essentials. Multiple categories.":"दैनंदिन गरजेच्या वस्तू. अनेक श्रेणी.","We source packaging materials to match your application, dimensions, quantity and budget. Product options depend on supplier availability and specification.":"तुमचा वापर, आकार, प्रमाण आणि बजेट यानुसार आम्ही पॅकेजिंग साहित्य सोर्स करतो. उत्पादनाचे पर्याय पुरवठादाराची उपलब्धता आणि तपशिलावर अवलंबून असतात.","Corrugated Boxes":"कोरुगेटेड बॉक्स","Shipping cartons, mailer boxes and industrial cartons.":"शिपिंग कार्टन, मेलर बॉक्स आणि औद्योगिक कार्टन.","Enquire about boxes →":"बॉक्सबद्दल चौकशी करा →","Protective Packaging":"संरक्षक पॅकेजिंग","Bubble wrap, foam and cushioning options.":"बबल रॅप, फोम आणि कुशनिंग पर्याय.","Find protection options →":"संरक्षणाचे पर्याय पहा →","Courier & Mailer Bags":"कुरिअर आणि मेलर बॅग","Shipping bags and paper mailer options.":"शिपिंग बॅग आणि पेपर मेलर पर्याय.","Enquire about bags →":"बॅगबद्दल चौकशी करा →","Tapes & Labels":"टेप आणि लेबल","Sealing tapes, shipping labels and consumables.":"सीलिंग टेप, शिपिंग लेबल आणि उपभोग्य साहित्य.","Source tapes & labels →":"टेप आणि लेबल सोर्स करा →","Food & Bakery Packaging":"फूड आणि बेकरी पॅकेजिंग","Takeaway boxes, bakery cartons, bowls and bags.":"टेकअवे बॉक्स, बेकरी कार्टन, बाउल आणि बॅग.","Explore food packaging →":"फूड पॅकेजिंग पहा →","Industrial Packaging":"औद्योगिक पॅकेजिंग","Strapping, stretch film and dispatch materials.":"स्ट्रॅपिंग, स्ट्रेच फिल्म आणि डिस्पॅच साहित्य.","Request industrial options →":"औद्योगिक पर्यायांची विनंती करा →","Wrapping & Pallet Supplies":"रॅपिंग आणि पॅलेट साहित्य","Stretch wrapping and load-protection materials.":"स्ट्रेच रॅपिंग आणि मालाच्या संरक्षणाचे साहित्य.","Enquire about wrapping →":"रॅपिंगबद्दल चौकशी करा →","Custom-Sourced Items":"कस्टम सोर्स केलेल्या वस्तू","Special sizes, printed options and other requirements.":"विशेष आकार, प्रिंटेड पर्याय आणि इतर गरजा.","Discuss your requirement →":"तुमची गरज सांगा →","Looking for something specific?":"काही विशिष्ट हवे आहे का?","Share the product, size, specification and estimated quantity. We’ll review sourcing options with you.":"उत्पादन, आकार, तपशील आणि अंदाजे प्रमाण सांगा. आम्ही तुमच्यासोबत सोर्सिंग पर्यायांचा आढावा घेऊ.","Tell Us What You Need":"तुमची गरज आम्हाला सांगा","One convenient point of contact":"एकच सोयीस्कर संपर्क","Less time coordinating across packaging categories.":"वेगवेगळ्या पॅकेजिंग श्रेणींच्या समन्वयात कमी वेळ.","Less sourcing effort. More focus on your business.":"सोर्सिंगचे कमी कष्ट. तुमच्या व्यवसायावर अधिक लक्ष.","Urban Earth Packaging Solutions and Services is a packaging material sourcing and supply partner for businesses that want a practical way to procure packaging products across categories.":"अर्बन अर्थ पॅकेजिंग सोल्यूशन्स अँड सर्व्हिसेस हे पॅकेजिंग साहित्य सोर्सिंग आणि पुरवठा भागीदार आहे, ज्या व्यवसायांना विविध श्रेणींतील पॅकेजिंग उत्पादने सोप्या पद्धतीने खरेदी करायची आहेत त्यांच्यासाठी.","We understand your requirement, coordinate with suitable suppliers and share quotation options based on the specifications and quantities involved.":"आम्ही तुमची गरज समजून घेतो, योग्य पुरवठादारांशी समन्वय साधतो आणि तपशील व प्रमाणानुसार कोटेशन पर्याय देतो.","Multiple categories":"अनेक श्रेणी","Bring different packaging needs to one conversation.":"वेगवेगळ्या पॅकेजिंग गरजा एकाच संवादात आणा.","Requirement-led sourcing":"गरजेनुसार सोर्सिंग","Options considered around size, use and quantity.":"आकार, वापर आणि प्रमाण यानुसार पर्याय.","Quote transparency":"कोटेशनमध्ये पारदर्शकता","Review product, quantity and commercial details.":"उत्पादन, प्रमाण आणि व्यावसायिक तपशील तपासा.","Responsive coordination":"तत्पर समन्वय","A clear point of contact for your enquiry.":"तुमच्या चौकशीसाठी स्पष्ट संपर्क.","A simple process":"एक सोपी प्रक्रिया","From requirement to supply.":"गरजेपासून पुरवठ्यापर्यंत.","A straightforward process designed to make packaging procurement easier.":"पॅकेजिंग खरेदी सोपी करण्यासाठी तयार केलेली सरळ प्रक्रिया.","Tell us your need":"तुमची गरज सांगा","Share product type, dimensions, application, quantity and delivery location.":"उत्पादनाचा प्रकार, आकार, वापर, प्रमाण आणि डिलिव्हरीचे ठिकाण सांगा.","We explore sourcing":"आम्ही सोर्सिंग शोधतो","We coordinate with suitable suppliers and check available specifications.":"आम्ही योग्य पुरवठादारांशी संपर्क साधतो आणि उपलब्ध तपशील तपासतो.","Review your quote":"तुमचे कोटेशन तपासा","Discuss pricing, order quantities, lead time and relevant product details.":"किंमत, ऑर्डरचे प्रमाण, डिलिव्हरीचा कालावधी आणि उत्पादनाच्या तपशिलावर चर्चा करा.","Confirm the order":"ऑर्डर निश्चित करा","Once details are agreed, we coordinate the supply process with you.":"तपशील ठरल्यावर आम्ही तुमच्यासोबत पुरवठा प्रक्रियेचा समन्वय करतो.","Have a packaging list to source?":"सोर्स करण्यासाठी पॅकेजिंगची यादी आहे का?","Send us your requirement—even if it includes several product types. We’ll help you work through the options.":"तुमची गरज पाठवा—त्यात अनेक प्रकारची उत्पादने असली तरी चालेल. पर्यायांवर काम करण्यात आम्ही मदत करू.","Request a Business Quote":"व्यवसायासाठी कोटेशन मागवा","Good to know":"जाणून घ्यावे असे","Frequently asked questions.":"नेहमी विचारले जाणारे प्रश्न.","Have a question before sending your requirement? Start here, or contact us directly for product-specific details.":"गरज पाठवण्यापूर्वी काही प्रश्न आहे का? येथून सुरुवात करा, किंवा उत्पादनाच्या माहितीसाठी थेट संपर्क करा.","Ask us a question":"आम्हाला प्रश्न विचारा","Do you manufacture packaging materials?":"तुम्ही पॅकेजिंग साहित्य बनवता का?","Our primary business is packaging material sourcing and supply. We coordinate with suppliers to help customers procure suitable products. Custom-made or printed items may be explored subject to supplier capability and feasibility.":"आमचा मुख्य व्यवसाय पॅकेजिंग साहित्याची सोर्सिंग आणि पुरवठा हा आहे. ग्राहकांना योग्य उत्पादने मिळवून देण्यासाठी आम्ही पुरवठादारांशी समन्वय साधतो. कस्टम किंवा प्रिंटेड वस्तू पुरवठादाराची क्षमता आणि व्यवहार्यतेनुसार तपासल्या जाऊ शकतात.","Can small businesses place orders?":"लहान व्यवसाय ऑर्डर देऊ शकतात का?","We welcome enquiries from small businesses as well as industrial buyers. Minimum quantities and availability depend on the specific product and supplier, so please share your requirement for review.":"आम्ही लहान व्यवसाय तसेच औद्योगिक खरेदीदार, दोघांच्या चौकशीचे स्वागत करतो. किमान प्रमाण आणि उपलब्धता संबंधित उत्पादन व पुरवठादारावर अवलंबून असते, त्यामुळे कृपया आढाव्यासाठी तुमची गरज पाठवा.","Can you source products not listed on this website?":"या वेबसाइटवर नसलेली उत्पादने तुम्ही सोर्स करू शकता का?","Yes, you can ask us about other packaging materials. Share the product description, dimensions, intended use and approximate quantity so we can assess sourcing options.":"हो, तुम्ही इतर पॅकेजिंग साहित्याबद्दल विचारू शकता. उत्पादनाचे वर्णन, आकार, वापर आणि अंदाजे प्रमाण सांगा, म्हणजे आम्ही सोर्सिंगचे पर्याय तपासू शकू.","Are food packaging products certified as food-safe?":"फूड पॅकेजिंग उत्पादने फूड-सेफ प्रमाणित आहेत का?","Product suitability and any food-contact documentation must be verified for the specific product and supplier. Please tell us the intended use and any documentation requirements before ordering.":"उत्पादनाची योग्यता आणि अन्नसंपर्काशी संबंधित कागदपत्रे संबंधित उत्पादन व पुरवठादारासाठी पडताळली गेली पाहिजेत. कृपया ऑर्डर देण्यापूर्वी वापर आणि आवश्यक कागदपत्रे सांगा.","Where can you supply packaging?":"तुम्ही पुण्याबाहेर पुरवठा करता का?","Share your delivery location, quantity and packaging requirements. We will confirm availability and shipping feasibility.":"पुणे आणि आसपासचा परिसर हे आमचे सुरुवातीचे लक्ष आहे. इतर ठिकाणांसाठी तुमचा डिलिव्हरी पिन कोड आणि गरज सांगा, म्हणजे व्यवहार्यता तपासता येईल.","Let’s talk packaging":"चला पॅकेजिंगबद्दल बोलूया","Tell us what your business needs.":"तुमच्या व्यवसायाला काय हवे ते सांगा.","Share a few details and we’ll have the information needed to discuss suitable sourcing options.":"थोडी माहिती द्या, म्हणजे आम्ही योग्य सोर्सिंग पर्यायांवर चर्चा करू शकू.","Let’s make packaging procurement simpler.":"चला पॅकेजिंग खरेदी सोपी करूया.","Whether you need a few packaging essentials or regular bulk supplies, start with a clear requirement.":"थोडे आवश्यक पॅकेजिंग साहित्य हवे असो किंवा नियमित घाऊक पुरवठा, सुरुवात स्पष्ट गरजेपासून करा.","Service area":"सेवा क्षेत्र","India":"पुणे, महाराष्ट्र, भारत","Other locations considered on request":"इतर ठिकाणे विनंतीनुसार विचारात घेतली जातील","WhatsApp or call":"WhatsApp किंवा कॉल करा","Quotation support":"कोटेशन सहाय्य","Share product details and estimated quantities":"उत्पादनाचा तपशील आणि अंदाजे प्रमाण सांगा","Request a quotation":"कोटेशनची विनंती करा","Fields marked * are required. Submitting opens WhatsApp with your enquiry filled in, ready to send.":"* असलेले फील्ड आवश्यक आहेत. सबमिट केल्यावर तुमची चौकशी भरलेल्या स्वरूपात WhatsApp मध्ये उघडेल, पाठवण्यासाठी तयार.","Your name *":"तुमचे नाव *","Full name":"पूर्ण नाव","Business name":"व्यवसायाचे नाव","Your business":"तुमचा व्यवसाय","Phone number *":"फोन नंबर *","10-digit mobile number":"10 अंकी मोबाइल नंबर","Packaging category *":"पॅकेजिंग श्रेणी *","Select a category":"श्रेणी निवडा","E-commerce packaging":"ई-कॉमर्स पॅकेजिंग","Food and bakery packaging":"फूड आणि बेकरी पॅकेजिंग","Industrial packaging":"औद्योगिक पॅकेजिंग","Protective packaging":"संरक्षक पॅकेजिंग","Tapes and labels":"टेप आणि लेबल","Other / multiple products":"इतर / अनेक उत्पादने","Estimated quantity / frequency":"अंदाजे प्रमाण / वारंवारता","e.g. 500 boxes monthly, one-time order":"उदा. दरमहा 500 बॉक्स, एकदाच ऑर्डर","What do you need? *":"तुम्हाला काय हवे आहे? *","Product type, dimensions, specifications, delivery pin code, etc.":"उत्पादनाचा प्रकार, आकार, तपशील, डिलिव्हरी पिन कोड इ.","Prepare Enquiry":"चौकशी तयार करा","Nothing is sent until you press send in WhatsApp.":"तुम्ही WhatsApp मध्ये पाठवा दाबेपर्यंत काहीही पाठवले जात नाही.","Your packaging material sourcing and supply partner. One point of contact for the packaging needs of growing businesses.":"तुमचा पॅकेजिंग साहित्य सोर्सिंग आणि पुरवठा भागीदार. वाढत्या व्यवसायांच्या पॅकेजिंग गरजांसाठी एकच संपर्क.","Explore":"पहा","Customer Solutions":"ग्राहक उपाय","Product Range":"उत्पादन श्रेणी","Popular Categories":"लोकप्रिय श्रेणी","Courier Bags":"कुरिअर बॅग","Food Packaging":"फूड पॅकेजिंग","Industrial Supplies":"औद्योगिक साहित्य","Get in touch":"संपर्क साधा","Request a Quotation":"कोटेशनची विनंती करा","Share a Product List":"उत्पादन यादी पाठवा","Call 73878 54283":"कॉल करा 73878 54283","Urban Earth Packaging Solutions and Services. All rights reserved.":"अर्बन अर्थ पॅकेजिंग सोल्यूशन्स अँड सर्व्हिसेस. सर्व हक्क राखीव.","Packaging supply, made more convenient.":"पॅकेजिंग पुरवठा, अधिक सोयीस्कर.","WhatsApp":"WhatsApp","Get a Quote ↗":"कोटेशन मिळवा ↗","Your enquiry message has been prepared in WhatsApp. Please review and send it there.":"तुमच्या चौकशीचा संदेश WhatsApp मध्ये तयार झाला आहे. कृपया तेथे तपासून पाठवा.","__title__":"अर्बन अर्थ पॅकेजिंग सोल्यूशन्स अँड सर्व्हिसेस | एकच पार्टनर. प्रत्येक पॅकेजिंगची गरज.","Product catalogue":"उत्पादन यादी","E-commerce":"ई-कॉमर्स","Food & Bakery":"फूड आणि बेकरी","Industrial":"औद्योगिक","E-commerce packaging products":"ई-कॉमर्स पॅकेजिंग उत्पादने","Food & bakery packaging products":"फूड आणि बेकरी पॅकेजिंग उत्पादने","Industrial packaging products":"औद्योगिक पॅकेजिंग उत्पादने","Browse what we can source in this category. Tap Enquire on any product to start your quote.":"या श्रेणीत आम्ही काय सोर्स करू शकतो ते पहा. कोटेशन सुरू करण्यासाठी कोणत्याही उत्पादनावर “चौकशी” दाबा.","Enquire about this →":"याबद्दल चौकशी करा →","*Printed options subject to supplier capability and minimum quantities.":"*प्रिंटेड पर्याय पुरवठादाराची क्षमता आणि किमान प्रमाणानुसार.","Availability, sizes and specifications are confirmed at the time of quotation.":"उपलब्धता, आकार आणि तपशील कोटेशनच्या वेळी निश्चित केले जातात.","Don’t see what you need?":"हवे ते दिसत नाही का?","We can source other items too. Tell us your requirement.":"आम्ही इतर वस्तूही सोर्स करू शकतो. तुमची गरज सांगा.","Corrugated shipping boxes":"कोरुगेटेड शिपिंग बॉक्स","3-ply and 5-ply cartons in a range of sizes for parcels and bulk dispatch.":"पार्सल आणि घाऊक डिस्पॅचसाठी विविध आकारांतील 3-प्लाय आणि 5-प्लाय कार्टन.","Tamper-evident bags for e-commerce shipments, plain or printed*.":"ई-कॉमर्स शिपमेंटसाठी टॅम्पर-एव्हिडंट बॅग, साध्या किंवा प्रिंटेड*.","Cushioning rolls that protect fragile items in transit.":"वाहतुकीत नाजूक वस्तूंचे संरक्षण करणारे कुशनिंग रोल.","Packaging tapes":"पॅकेजिंग टेप","Clear, brown and printed* BOPP tapes for sealing cartons.":"कार्टन सील करण्यासाठी क्लिअर, ब्राउन आणि प्रिंटेड* BOPP टेप.","Padded and plain mailers for lightweight shipments.":"हलक्या शिपमेंटसाठी पॅडेड आणि साधे मेलर.","Wrapping film to bundle and secure multiple parcels.":"अनेक पार्सल बांधण्यासाठी आणि सुरक्षित ठेवण्यासाठी रॅपिंग फिल्म.","Shipping labels":"शिपिंग लेबल","Thermal and adhesive labels for addresses and barcodes.":"पत्ते आणि बारकोडसाठी थर्मल व चिकट लेबल.","Fragile & warning tapes":"फ्रॅजाइल आणि सूचना टेप","“Fragile” and “Handle with care” tapes for safer handling.":"सुरक्षित हाताळणीसाठी “Fragile” आणि “Handle with care” टेप.","Cake, pastry and cookie boxes, with or without a window.":"केक, पेस्ट्री आणि कुकीजचे बॉक्स, खिडकीसह किंवा खिडकीशिवाय.","Pizza boxes":"पिझ्झा बॉक्स","Corrugated pizza boxes in standard sizes.":"प्रमाण आकारांतील कोरुगेटेड पिझ्झा बॉक्स.","Meal boxes and containers for takeaway and delivery.":"टेकअवे आणि डिलिव्हरीसाठी मील बॉक्स आणि कंटेनर.","Kraft paper bags for food, bakery and retail use.":"फूड, बेकरी आणि रिटेलसाठी क्राफ्ट पेपर बॅग.","Paper and kraft bowls for soups, salads and meals.":"सूप, सॅलड आणि जेवणासाठी पेपर व क्राफ्ट बाउल.","Paper cups with lids for tea, coffee and cold drinks.":"चहा, कॉफी आणि कोल्ड ड्रिंकसाठी झाकणासह पेपर कप.","Aluminium foil containers with lids for hot food and catering.":"गरम अन्न आणि केटरिंगसाठी झाकणासह अॅल्युमिनियम फॉइल कंटेनर.","Butter paper & wraps":"बटर पेपर आणि रॅप","Grease-proof paper and wraps for sandwiches and bakery items.":"सँडविच आणि बेकरी पदार्थांसाठी ग्रीस-प्रूफ पेपर आणि रॅप.","5-ply and 7-ply cartons for heavy or bulk dispatches.":"जड किंवा घाऊक डिस्पॅचसाठी 5-प्लाय आणि 7-प्लाय कार्टन.","Strapping rolls":"स्ट्रॅपिंग रोल","PP strapping for bundling cartons and securing pallets.":"कार्टन बांधण्यासाठी आणि पॅलेट सुरक्षित करण्यासाठी PP स्ट्रॅपिंग.","Pallet wrapping film for load stability.":"मालाच्या स्थिरतेसाठी पॅलेट रॅपिंग फिल्म.","Corner and edge guards that prevent damage to stacked goods.":"रचलेल्या मालाचे नुकसान टाळणारे कॉर्नर आणि एज गार्ड.","EPE foam sheets and rolls for cushioning equipment and parts.":"उपकरणे आणि सुट्या भागांच्या कुशनिंगसाठी EPE फोम शीट व रोल.","Kraft paper rolls":"क्राफ्ट पेपर रोल","Wrapping and void-fill paper for industrial packing.":"औद्योगिक पॅकिंगसाठी रॅपिंग आणि व्हॉइड-फिल पेपर.","Made-to-size cartons for special dimensions.":"विशेष आकारांसाठी मापानुसार बनवलेले कार्टन.","Strapping accessories":"स्ट्रॅपिंग अॅक्सेसरीज","Buckles, seals and tensioning tools for strapping.":"स्ट्रॅपिंगसाठी बकल, सील आणि टेन्शनिंग टूल.","Home":"मुख्यपृष्ठ","Back to all solutions":"सर्व उपायांकडे परत","Explore other categories":"इतर श्रेणी पहा","Food & bakery packaging":"फूड आणि बेकरी पॅकेजिंग","Everything you need to pack, protect and ship online orders—from boxes and pouches to labels and tapes.":"ऑनलाइन ऑर्डर पॅक, सुरक्षित आणि शिप करण्यासाठी लागणारे सर्व काही—बॉक्स आणि पाउचपासून लेबल आणि टेपपर्यंत.","17 products":"17 उत्पादने","Boxes & cartons":"बॉक्स आणि कार्टन","Mailer boxes":"मेलर बॉक्स","Self-locking mailer boxes for apparel, gifts and accessories.":"कपडे, गिफ्ट आणि अॅक्सेसरीजसाठी सेल्फ-लॉकिंग मेलर बॉक्स.","Jewellery boxes":"ज्वेलरी बॉक्स","Small rigid and folding boxes for rings, necklaces and ornaments.":"अंगठ्या, हार आणि दागिन्यांसाठी लहान रिजिड व फोल्डिंग बॉक्स.","Gift boxes":"गिफ्ट बॉक्स","Presentation boxes for gifting, hampers and festive orders.":"गिफ्टिंग, हॅम्पर आणि सणासुदीच्या ऑर्डरसाठी प्रेझेंटेशन बॉक्स.","Bags & pouches":"बॅग आणि पाउच","Padded bubble mailers":"पॅडेड बबल मेलर","Bubble-lined mailers for small fragile items and accessories.":"लहान नाजूक वस्तू आणि अॅक्सेसरीजसाठी बबल-लाइन्ड मेलर.","Small pouches (zip-lock)":"लहान पाउच (झिप-लॉक)","Zip-lock and flat pouches for small parts, jewellery, spices and samples.":"लहान भाग, दागिने, मसाले आणि सॅम्पलसाठी झिप-लॉक आणि फ्लॅट पाउच.","Stand-up pouches":"स्टँड-अप पाउच","Stand-up pouches for dry goods, snacks and retail products.":"कोरडा माल, स्नॅक्स आणि रिटेल उत्पादनांसाठी स्टँड-अप पाउच.","Poly bags":"पॉली बॅग","Clear LDPE and PP bags in multiple sizes for everyday packing.":"दैनंदिन पॅकिंगसाठी विविध आकारांतील क्लिअर LDPE आणि PP बॅग.","Cushioning & protection":"कुशनिंग आणि संरक्षण","Void-fill paper":"व्हॉइड-फिल पेपर","Crinkle and kraft paper fill to keep items snug inside boxes.":"बॉक्समध्ये वस्तू घट्ट बसवण्यासाठी क्रिंकल आणि क्राफ्ट पेपर फिल.","Tapes, labels & tags":"टेप, लेबल आणि टॅग","Sticker labels":"स्टिकर लेबल","Price, barcode and branding sticker labels, plain or printed*.":"प्राइस, बारकोड आणि ब्रँडिंग स्टिकर लेबल, साधे किंवा प्रिंटेड*.","Hang tags & thank-you cards":"हँग टॅग आणि थँक-यू कार्ड","Tags and cards that add a finishing touch to every order.":"प्रत्येक ऑर्डरला खास स्पर्श देणारे टॅग आणि कार्ड.","Takeaway, bakery and food-service packaging for restaurants, bakeries and cloud kitchens.":"रेस्टॉरंट, बेकरी आणि क्लाउड किचनसाठी टेकअवे, बेकरी आणि फूड-सर्व्हिस पॅकेजिंग.","14 products":"14 उत्पादने","Cake boxes & boards":"केक बॉक्स आणि बोर्ड","Cake boxes in assorted sizes with matching cake boards.":"विविध आकारांतील केक बॉक्स आणि जुळणारे केक बोर्ड.","Sweet / mithai boxes":"मिठाई बॉक्स","Mithai and sweet boxes, plain or with window, in common weights.":"मिठाईचे बॉक्स, साधे किंवा खिडकीसह, प्रचलित वजनांमध्ये.","Food pouches":"फूड पाउच","Stand-up and flat pouches for snacks, spices and dry foods.":"स्नॅक्स, मसाले आणि कोरड्या अन्नपदार्थांसाठी स्टँड-अप व फ्लॅट पाउच.","Serveware":"वाढण्याचे साहित्य","Paper plates & trays":"पेपर प्लेट आणि ट्रे","Disposable paper plates and serving trays for events and catering.":"कार्यक्रम आणि केटरिंगसाठी डिस्पोजेबल पेपर प्लेट आणि ट्रे.","Straws & cutlery":"स्ट्रॉ आणि कटलरी","Paper straws and wooden cutlery as eco-friendlier add-ons.":"पर्यावरणपूरक पर्याय म्हणून पेपर स्ट्रॉ आणि लाकडी कटलरी.","Wraps, seals & extras":"रॅप, सील आणि इतर","Tamper-proof seals & stickers":"टॅम्पर-प्रूफ सील आणि स्टिकर","Seal stickers that show if a delivery pack has been opened.":"डिलिव्हरी पॅक उघडला गेला आहे का ते दाखवणारे सील स्टिकर.","Cartons, strapping, wrapping and protection materials for dispatch, storage and bulk supply.":"डिस्पॅच, साठवणूक आणि घाऊक पुरवठ्यासाठी कार्टन, स्ट्रॅपिंग, रॅपिंग आणि संरक्षण साहित्य.","12 products":"12 उत्पादने","Cartons & sheets":"कार्टन आणि शीट","Corrugated sheets & layer pads":"कोरुगेटेड शीट आणि लेयर पॅड","Flat corrugated sheets and layer pads to separate and protect stacked goods.":"रचलेला माल वेगळा करण्यासाठी आणि वाचवण्यासाठी फ्लॅट कोरुगेटेड शीट व लेयर पॅड.","Strapping & wrapping":"स्ट्रॅपिंग आणि रॅपिंग","Heavy-duty tapes":"हेवी-ड्यूटी टेप","Strong BOPP and cloth tapes for sealing heavy cartons.":"जड कार्टन सील करण्यासाठी मजबूत BOPP आणि कापडी टेप.","Protection":"संरक्षण","Sacks & covers":"गोण्या आणि कव्हर","PP woven sacks":"PP विणलेल्या गोण्या","Woven polypropylene sacks for bulk goods, grain and materials.":"घाऊक माल, धान्य आणि साहित्यासाठी विणलेल्या पॉलीप्रोपिलीन गोण्या.","Poly liners & covers":"पॉली लायनर आणि कव्हर","Poly liners and covers to keep goods clean and dry.":"माल स्वच्छ आणि कोरडा ठेवण्यासाठी पॉली लायनर व कव्हर.","Browse by category":"श्रेणीनुसार पहा","Packaging materials including cartons, pouches, bags, tapes and crates":"कार्टन, पाउच, बॅग, टेप आणि क्रेटसह पॅकेजिंग साहित्य","Categories":"श्रेणी"}};
 var _add={"All products":"सर्व उत्पादने","Browse every product in one place.":"सर्व उत्पादने एकाच ठिकाणी पहा.","Search, add the products you need to your enquiry, and send everything together on WhatsApp.":"शोधा, हवी ती उत्पादने तुमच्या चौकशीत जोडा आणि सर्व काही एकत्र WhatsApp वर पाठवा.","Search all products – e.g. Stretch Film, Bakery Box, Courier Bags, Kraft Paper...":"सर्व उत्पादने शोधा – उदा. स्ट्रेच फिल्म, बेकरी बॉक्स, कुरिअर बॅग, क्राफ्ट पेपर...","All":"सर्व","product":"उत्पादन","products":"उत्पादने"};Object.keys(_add).forEach(function(k){if(!(k in I18N.hi))I18N.hi[k]=_add[k];if(!(k in I18N.mr))I18N.mr[k]=_add[k]});
 
+var SEARCH_I18N_HI = {
+  "Search 127+ products: e.g. cake boxes, courier bags, stretch film...": "127+ उत्पाद खोजें: जैसे केक बॉक्स, कूरियर बैग, स्ट्रेच फिल्म...",
+  "Search packaging products by name, material, or use": "नाम, सामग्री या उपयोग के अनुसार पैकेजिंग उत्पाद खोजें",
+  "Search": "खोजें",
+  "Popular:": "लोकप्रिय:",
+  "Paper Bowls": "पेपर बाउल",
+  "Courier Bags": "कूरियर बैग",
+  "Stretch Film": "स्ट्रेच फिल्म",
+  "Suggested products": "सुझाए गए उत्पाद",
+  "View all matching products in catalogue": "कैटलॉग में सभी मिलते-जुलते उत्पाद देखें",
+  "No products found for": "इसके लिए कोई उत्पाद नहीं मिला",
+  "Looking for a custom size, special material or unlisted item? We source custom packaging directly from manufacturers.": "कस्टम साइज़, विशेष सामग्री या गैर-सूचीबद्ध उत्पाद चाहिए? हम सीधे निर्माताओं से सोर्स करते हैं।",
+  "Enquire for custom packaging on WhatsApp ↗": "कस्टम पैकेजिंग के लिए WhatsApp पर पूछताछ करें ↗"
+};
+var SEARCH_I18N_MR = {
+  "Search 127+ products: e.g. cake boxes, courier bags, stretch film...": "127+ उत्पादने शोधा: उदा. केक बॉक्स, कुरिअर बॅग, स्ट्रेच फिल्म...",
+  "Search packaging products by name, material, or use": "नाव, साहित्य किंवा उपयोगानुसार पॅकेजिंग उत्पादने शोधा",
+  "Search": "शोधा",
+  "Popular:": "लोकप्रिय:",
+  "Paper Bowls": "पेपर बाऊल",
+  "Courier Bags": "कुरिअर बॅग",
+  "Stretch Film": "स्ट्रेच फिल्म",
+  "Suggested products": "सुचवलेली उत्पादने",
+  "View all matching products in catalogue": "कॅटलॉगमध्ये सर्व जुळणारी उत्पादने पहा",
+  "No products found for": "यासाठी कोणतीही उत्पादने आढळली नाहीत",
+  "Looking for a custom size, special material or unlisted item? We source custom packaging directly from manufacturers.": "कस्टम आकार, विशेष साहित्य किंवा इतर उत्पादने हवी आहेत? आम्ही थेट उत्पादकांकडून सोर्स करतो.",
+  "Enquire for custom packaging on WhatsApp ↗": "कस्टम पॅकेजिंगसाठी WhatsApp वर चौकशी करा ↗"
+};
+Object.keys(SEARCH_I18N_HI).forEach(function(k){I18N.hi[k]=SEARCH_I18N_HI[k]});
+Object.keys(SEARCH_I18N_MR).forEach(function(k){I18N.mr[k]=SEARCH_I18N_MR[k]});
 var NEW_HI={"Packaging solutions for businesses across Pune and surrounding area":"पुणे और आसपास के क्षेत्रों के व्यवसायों के लिए पैकेजिंग समाधान", "Packaging for Every Business.": "हर व्यवसाय के लिए पैकेजिंग।", "One Trusted Sourcing Partner.": "एक भरोसेमंद सप्लाई पार्टनर।", "Your complete packaging sourcing partner": "आपका संपूर्ण पैकेजिंग सप्लाई पार्टनर", "From food containers and e-commerce mailers to industrial protection, discover packaging materials, sizes and customisation options in one place.": "फूड कंटेनर, ई-कॉमर्स मेलर से लेकर औद्योगिक सुरक्षा तक—पैकेजिंग सामग्री, आकार और कस्टमाइज़ेशन विकल्प एक ही जगह पाएं।", "Search products, materials or applications": "उत्पाद, सामग्री या उपयोग खोजें", "Try: cake boxes, courier bags, EPE foam, stretch film": "जैसे: केक बॉक्स, कुरियर बैग, ईपीई फोम, स्ट्रेच फिल्म", "Find Products →": "उत्पाद खोजें →", "Browse by Industry": "उद्योग के अनुसार देखें", "Business-focused support": "व्यवसाय-केंद्रित सहायता", "Where can you supply packaging?": "आप कहाँ पैकेजिंग सप्लाई करते हैं?", "Share your delivery location, quantity and packaging requirements. We will confirm availability and shipping feasibility.": "अपना डिलीवरी स्थान, मात्रा और पैकेजिंग की ज़रूरत बताएं। हम उपलब्धता और डिलीवरी की संभावना की पुष्टि करेंगे।", "Choose your industry": "अपना उद्योग चुनें", "Find packaging that fits your business": "अपने व्यवसाय के लिए सही पैकेजिंग खोजें", "Explore our three core ranges, or search for a specific product or application.": "हमारी तीन मुख्य श्रेणियाँ देखें या कोई उत्पाद अथवा उपयोग खोजें।", "E-commerce & Shipping": "ई-कॉमर्स और शिपिंग", "Food & Bakery": "खाद्य और बेकरी", "Industrial & Protective": "औद्योगिक और सुरक्षा पैकेजिंग", "Boxes, courier mailers, bubble wrap, tape and labels": "बॉक्स, कुरियर मेलर, बबल रैप, टेप और लेबल", "Food bowls, cups, takeaway packs, cake and bakery boxes": "फूड बाउल, कप, टेकअवे पैक और बेकरी बॉक्स", "Stretch wrap, EPE foam, woven sacks, edge protectors and pallets": "स्ट्रेच रैप, ईपीई फोम, बुने हुए बोरे, एज प्रोटेक्टर और पैलेट", "Explore products": "उत्पाद देखें", "Bulk & repeat supply": "थोक और नियमित सप्लाई", "Custom sizes & branding": "कस्टम आकार और ब्रांडिंग", "One enquiry for multiple products": "कई उत्पादों के लिए एक पूछताछ", "Browse all products": "सभी उत्पाद देखें", "Not sure what you need?": "क्या चाहिए, निश्चित नहीं?", "Tell us what you need to pack. We can help identify suitable options.": "बताएं कि आपको क्या पैक करना है। हम उपयुक्त विकल्प ढूंढने में मदद करेंगे।", "Ask for packaging guidance": "पैकेजिंग के लिए सलाह लें"}; Object.assign(I18N.hi,NEW_HI);
 var LEAD=/^[\s\u00a0\u00b7\u2316]+/,cur='en',recs=[],attrs=[];
 var own=function(o,k){return Object.prototype.hasOwnProperty.call(o,k)};
@@ -1036,5 +1494,415 @@ if(location.protocol==='file:'){
     }
   });
 }
+</script>
+<!-- Hero Product Search Functionality -->
+<script id="ue-hero-search-script">
+(function() {
+  var searchWrap = document.getElementById('ueHeroSearchWrap');
+  var input = document.getElementById('ueHeroSearchInput');
+  var clearBtn = document.getElementById('ueHeroSearchClear');
+  var form = document.getElementById('ueHeroSearchForm');
+  var panel = document.getElementById('ueHeroSuggestPanel');
+  var list = document.getElementById('ueHeroSuggestList');
+  var countEl = document.getElementById('ueSuggestCount');
+  var emptyState = document.getElementById('ueSuggestEmpty');
+  var emptyQuery = document.getElementById('ueEmptyQuery');
+  var emptyWaBtn = document.getElementById('ueEmptyWaBtn');
+  var footer = document.getElementById('ueSuggestFooter');
+  var viewAllBtn = document.getElementById('ueSuggestViewAll');
+  
+  if (!searchWrap || !input) return;
+
+  var catalog = [];
+  var activeIndex = -1;
+  var currentResults = [];
+  var currentQuery = '';
+
+  function T(text) {
+    return (window.T ? window.T(text) : text) || text;
+  }
+
+  function initCatalog() {
+    if (catalog.length) return;
+    var cards = document.querySelectorAll('#products .cat-card');
+    cards.forEach(function(card) {
+      var h3 = card.querySelector('h3');
+      var name = h3 ? h3.textContent.trim() : '';
+      var row = card.querySelector('.add-row');
+      var pid = row ? (row.dataset.pid || '') : '';
+      var cat = row ? (row.dataset.cat || '') : '';
+      var link = card.querySelector('.ue-detail-link');
+      var href = link ? link.getAttribute('href') : '';
+      var img = card.querySelector('.cat-photo') || card.querySelector('img');
+      var imgSrc = img ? img.getAttribute('src') : '';
+      var p = card.querySelector('p');
+      var desc = p ? p.textContent.trim() : '';
+      var searchAttr = (card.dataset.search || '') + ' ' + (card.textContent || '');
+      
+      var hiName = (window.I18N && window.I18N.hi && window.I18N.hi[name]) || '';
+      var mrName = (window.I18N && window.I18N.mr && window.I18N.mr[name]) || '';
+      
+      var fullSearch = (name + ' ' + pid + ' ' + cat + ' ' + desc + ' ' + searchAttr + ' ' + hiName + ' ' + mrName).toLowerCase();
+      var words = fullSearch.match(/[a-z0-9_\-\u0900-\u097f]+/g) || [];
+      
+      catalog.push({
+        card: card,
+        name: name,
+        pid: pid,
+        cat: cat,
+        href: href,
+        img: imgSrc,
+        desc: desc,
+        search: fullSearch,
+        words: words
+      });
+    });
+  }
+
+  var SYNONYMS = {
+    'thermocol': ['eps', 'polystyrene', 'foam', 'cushioning', 'expanded polystyrene'],
+    'thermacol': ['eps', 'polystyrene', 'foam', 'cushioning', 'expanded polystyrene'],
+    'parcel bag': ['courier', 'poly', 'mailer', 'delivery bag'],
+    'parcel bags': ['courier', 'poly', 'mailer', 'delivery bag'],
+    'salad container': ['salad', 'kraft paper bowl', 'bagasse bowl', 'takeaway container'],
+    'salad containers': ['salad', 'kraft paper bowl', 'bagasse bowl', 'takeaway container'],
+    'pallet wrap': ['stretch film', 'shrink film', 'pallet wrap', 'cling film'],
+    'pallet film': ['stretch film', 'shrink film', 'pallet wrap'],
+    'paper bowls': ['paper bowl', 'salad bowl', 'kraft bowl'],
+    'paper bowl': ['paper bowl', 'salad bowl', 'kraft bowl'],
+    'courier bags': ['courier bag', 'courier', 'mailer', 'poly bag'],
+    'courier bag': ['courier bag', 'courier', 'mailer', 'poly bag'],
+    'stretch film': ['stretch film', 'stretch', 'film dispenser', 'shrink film'],
+    'bubble': ['bubble wrap', 'air bubble', 'cushioning'],
+    'tape': ['packing tape', 'bopp', 'adhesive tape', 'tapes'],
+    'tapes': ['packing tape', 'bopp', 'adhesive tape', 'tapes'],
+    'boxes': ['box', 'corrugated', 'carton', 'mailer box'],
+    'box': ['corrugated', 'carton', 'mailer box', 'boxes'],
+    'dabba': ['box', 'container', 'carton'],
+    'pouch': ['stand-up pouch', 'zip lock', 'food pouch', 'pouches'],
+    'pouches': ['stand-up pouch', 'zip lock', 'food pouch', 'pouches'],
+    'cup': ['paper cup', 'insulated cup', 'coffee cup', 'cups'],
+    'cups': ['paper cup', 'insulated cup', 'coffee cup', 'cups'],
+    'straw': ['paper straw', 'straws'],
+    'straws': ['paper straw', 'straws'],
+    'थर्मोकोल': ['thermocol', 'eps', 'foam'],
+    'बॉक्स': ['box', 'carton', 'boxes'],
+    'डब्बा': ['box', 'container'],
+    'बॅग': ['bag', 'courier', 'bags'],
+    'थैली': ['bag', 'pouch'],
+    'कप': ['cup', 'cups'],
+    'बाउल': ['bowl', 'bowls'],
+    'बाऊल': ['bowl', 'bowls'],
+    'टेप': ['tape', 'tapes'],
+    'फिल्म': ['film', 'stretch'],
+    'स्ट्रॉ': ['straw', 'straws']
+  };
+
+  function lev(s1, s2) {
+    if (Math.abs(s1.length - s2.length) > 2) return 99;
+    var len1 = s1.length, len2 = s2.length;
+    var d = [];
+    for (var i = 0; i <= len1; i++) d[i] = [i];
+    for (var j = 0; j <= len2; j++) d[0][j] = j;
+    for (var i = 1; i <= len1; i++) {
+      for (var j = 1; j <= len2; j++) {
+        var cost = s1.charAt(i - 1) === s2.charAt(j - 1) ? 0 : 1;
+        d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+      }
+    }
+    return d[len1][len2];
+  }
+
+  function search(q) {
+    initCatalog();
+    var raw = q.trim().toLowerCase();
+    if (!raw) return { top: [], total: 0 };
+
+    var expanded = [raw];
+    if (SYNONYMS[raw]) {
+      expanded = expanded.concat(SYNONYMS[raw]);
+    }
+
+    var tokens = raw.split(/\s+/).filter(Boolean);
+    var scored = [];
+
+    for (var i = 0; i < catalog.length; i++) {
+      var it = catalog[i];
+      var score = 0;
+      var sTitle = it.name.toLowerCase();
+      var sHay = it.search;
+
+      // 1. Phrase matching
+      for (var j = 0; j < expanded.length; j++) {
+        var term = expanded[j];
+        if (sTitle.indexOf(term) > -1) {
+          score += 120;
+        } else if (sHay.indexOf(term) > -1) {
+          score += 60;
+        }
+      }
+
+      // 2. Token matching
+      var matchedTokens = 0;
+      for (var t = 0; t < tokens.length; t++) {
+        var tok = tokens[t];
+        var tokSyns = [tok].concat(SYNONYMS[tok] || []);
+        var tokFound = false;
+
+        for (var s = 0; s < tokSyns.length; s++) {
+          var syn = tokSyns[s];
+          if (sTitle.indexOf(syn) > -1) {
+            score += 40;
+            tokFound = true;
+            break;
+          } else if (sHay.indexOf(syn) > -1) {
+            score += 20;
+            tokFound = true;
+            break;
+          }
+        }
+
+        if (!tokFound && tok.length >= 4) {
+          for (var w = 0; w < it.words.length; w++) {
+            var word = it.words[w];
+            if (Math.abs(word.length - tok.length) <= 2) {
+              var dist = lev(tok, word);
+              var maxDist = tok.length <= 5 ? 1 : 2;
+              if (dist <= maxDist) {
+                score += Math.max(0, 14 - dist * 5);
+                tokFound = true;
+                break;
+              }
+            }
+          }
+        }
+
+        if (tokFound) matchedTokens++;
+      }
+
+      if (matchedTokens === tokens.length || score >= 40) {
+        scored.push({ item: it, score: score });
+      }
+    }
+
+    scored.sort(function(a, b) { return b.score - a.score; });
+    var top = scored.slice(0, 5).map(function(s) { return s.item; });
+    return { top: top, total: scored.length };
+  }
+
+  function escapeHtml(str) {
+    return (str || '').replace(/[&<>"']/g, function(m) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+    });
+  }
+
+  function highlightMatches(text, query) {
+    if (!query) return escapeHtml(text);
+    var tokens = query.trim().split(/\s+/).filter(Boolean);
+    if (!tokens.length) return escapeHtml(text);
+    var pattern = new RegExp('(' + tokens.map(function(t) {
+      return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }).join('|') + ')', 'gi');
+    return escapeHtml(text).replace(pattern, '<mark>$1</mark>');
+  }
+
+  function openDropdown() {
+    panel.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeDropdown() {
+    panel.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-activedescendant');
+    activeIndex = -1;
+    updateActiveDescendant();
+  }
+
+  function updateActiveDescendant() {
+    var items = list.querySelectorAll('.ue-suggest-item');
+    items.forEach(function(item, idx) {
+      var isAct = (idx === activeIndex);
+      item.classList.toggle('active', isAct);
+      item.setAttribute('aria-selected', String(isAct));
+      if (isAct) {
+        input.setAttribute('aria-activedescendant', item.id);
+      }
+    });
+    if (activeIndex === -1) {
+      input.removeAttribute('aria-activedescendant');
+    }
+  }
+
+  function jumpToCatalog(q) {
+    closeDropdown();
+    var catSearch = document.getElementById('prodSearch');
+    if (catSearch) {
+      catSearch.value = q;
+      catSearch.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    var sec = document.getElementById('products');
+    if (sec) {
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function render(q) {
+    currentQuery = q.trim();
+    if (!currentQuery) {
+      closeDropdown();
+      clearBtn.hidden = true;
+      return;
+    }
+    clearBtn.hidden = false;
+
+    var res = search(currentQuery);
+    currentResults = res.top;
+    activeIndex = -1;
+
+    if (res.total === 0) {
+      list.innerHTML = '';
+      countEl.textContent = '';
+      footer.hidden = true;
+      emptyQuery.textContent = currentQuery;
+      var waMsg = 'Hello Urban Earth, I am looking for custom packaging: ' + currentQuery + '. Please let me know sourcing options and quotation.';
+      emptyWaBtn.href = 'https://wa.me/917387854283?text=' + encodeURIComponent(waMsg);
+      emptyState.hidden = false;
+      openDropdown();
+      return;
+    }
+
+    emptyState.hidden = true;
+    countEl.textContent = '(' + res.top.length + (res.total > res.top.length ? ' of ' + res.total : '') + ')';
+
+    var html = '';
+    for (var i = 0; i < res.top.length; i++) {
+      var it = res.top[i];
+      var localizedName = T(it.name);
+      var localizedCat = T(it.cat);
+      var highlightedName = highlightMatches(localizedName, currentQuery);
+      
+      html += '<li role="option" aria-selected="false" class="ue-suggest-item" id="ue-opt-' + i + '">';
+      html += '<a href="' + escapeHtml(it.href) + '" class="ue-suggest-link">';
+      if (it.img) {
+        html += '<img src="' + escapeHtml(it.img) + '" alt="' + escapeHtml(localizedName) + '" class="ue-suggest-thumb" width="44" height="44" loading="lazy" />';
+      }
+      html += '<div class="ue-suggest-info">';
+      html += '<div class="ue-suggest-top">';
+      html += '<span class="ue-suggest-name">' + highlightedName + '</span>';
+      html += '<span class="ue-suggest-badge">' + escapeHtml(localizedCat) + '</span>';
+      html += '</div>';
+      if (it.desc) {
+        html += '<span class="ue-suggest-desc">' + escapeHtml(it.desc) + '</span>';
+      }
+      html += '</div>';
+      html += '<span class="ue-suggest-arrow" aria-hidden="true">→</span>';
+      html += '</a>';
+      html += '</li>';
+    }
+    list.innerHTML = html;
+
+    footer.hidden = false;
+    viewAllBtn.querySelector('span').textContent = T('View all matching products in catalogue') + ' (' + res.total + ')';
+
+    openDropdown();
+  }
+
+  // Events
+  input.addEventListener('input', function() {
+    render(input.value);
+  });
+
+  input.addEventListener('focus', function() {
+    if (input.value.trim()) {
+      render(input.value);
+    }
+  });
+
+  clearBtn.addEventListener('click', function() {
+    input.value = '';
+    closeDropdown();
+    clearBtn.hidden = true;
+    input.focus();
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (activeIndex >= 0 && currentResults[activeIndex]) {
+      window.location.href = currentResults[activeIndex].href;
+    } else if (input.value.trim()) {
+      jumpToCatalog(input.value.trim());
+    }
+  });
+
+  viewAllBtn.addEventListener('click', function() {
+    if (input.value.trim()) {
+      jumpToCatalog(input.value.trim());
+    }
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (panel.hidden) {
+      if (e.key === 'ArrowDown' && input.value.trim()) {
+        render(input.value);
+        e.preventDefault();
+      }
+      return;
+    }
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (currentResults.length) {
+        activeIndex = (activeIndex + 1) % currentResults.length;
+        updateActiveDescendant();
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (currentResults.length) {
+        activeIndex = activeIndex <= 0 ? currentResults.length - 1 : activeIndex - 1;
+        updateActiveDescendant();
+      }
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && currentResults[activeIndex]) {
+        e.preventDefault();
+        window.location.href = currentResults[activeIndex].href;
+      } else {
+        e.preventDefault();
+        jumpToCatalog(input.value.trim());
+      }
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closeDropdown();
+    }
+  });
+
+  // Popular search chips
+  document.querySelectorAll('.ue-pop-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var q = chip.dataset.query || chip.textContent.trim();
+      input.value = q;
+      render(q);
+      input.focus();
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!searchWrap.contains(e.target)) {
+      closeDropdown();
+    }
+  });
+
+  // Re-render suggestions if language changes while open
+  document.querySelectorAll('.lang-switch button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (!panel.hidden && currentQuery) {
+        setTimeout(function() {
+          render(currentQuery);
+        }, 60);
+      }
+    });
+  });
+})();
 </script>
 </body></html>
